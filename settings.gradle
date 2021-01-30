@@ -1,2 +1,3 @@
+include ':circularimageview-4.2.0'
 include ':app'
 rootProject.name = "TutorApp"

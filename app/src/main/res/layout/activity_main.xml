@@ -31,7 +31,7 @@
             app:itemIconTint="@color/nav_item_state_list"
             app:itemTextColor="@color/nav_item_state69  _list"
             app:labelVisibilityMode="labeled"
-            app:menu="@menu/bottom_navigation_items" />
+            app:menu="@menu/bottom_navigation_items"/>
 
     </RelativeLayout>-->
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

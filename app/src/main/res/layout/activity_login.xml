@@ -74,6 +74,8 @@
         android:layout_marginRight="30dp"
         android:background="@drawable/edittext"
         android:hint="Username"
+        android:gravity="center"
+        android:textSize="20dp"
         android:padding="10dp"
         android:singleLine="true" />
 
@@ -98,6 +100,8 @@
         android:layout_marginRight="30dp"
         android:background="@drawable/edittext"
         android:hint="Password"
+        android:gravity="center"
+        android:textSize="20dp"
         android:inputType="textPassword"
         android:padding="10dp"
         android:singleLine="true" />
@@ -124,6 +128,7 @@
         android:layout_marginBottom="10dp"
         android:backgroundTint="#F8D9C8"
         android:text="Login"
+        android:textSize="20dp"
         android:textColor="#131212" />
 
     <LinearLayout

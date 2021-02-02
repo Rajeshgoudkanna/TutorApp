@@ -27,7 +27,6 @@
         android:textColor="#000000"
         android:textSize="24sp" />
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,7 +65,6 @@
         android:textColor="#96B0BF"
         android:textSize="16dp" />
 
-
     <EditText
         android:id="@+id/et_USERNAME"
         android:layout_width="match_parent"
@@ -79,7 +77,6 @@
         android:padding="10dp"
         android:singleLine="true" />
 
-
     <TextView
         android:id="@+id/tv_password"
         android:layout_width="wrap_content"
@@ -91,7 +88,6 @@
         android:text="Password"
         android:textColor="#96B0BF"
         android:textSize="16dp" />
-
 
     <EditText
         android:id="@+id/et_PWD"
@@ -106,7 +102,6 @@
         android:padding="10dp"
         android:singleLine="true" />
 
-
     <TextView
         android:id="@+id/tv_forgetpwd"
         android:layout_width="wrap_content"
@@ -118,7 +113,6 @@
         android:textColor="#96B0BF"
         android:textSize="17dp"
         android:visibility="gone" />
-
 
     <Button
         android:id="@+id/btn_login"
@@ -156,7 +150,6 @@
             android:textSize="20dp" />
 
     </LinearLayout>
-
 
 </LinearLayout>
 

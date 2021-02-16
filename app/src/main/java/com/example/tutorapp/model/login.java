@@ -1,4 +1,4 @@
-package com.example.tutorapp;
+package com.example.tutorapp.model;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +16,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tutorapp.Activities.Utils;
+import com.example.tutorapp.MainActivity;
+import com.example.tutorapp.R;
+import com.example.tutorapp.registration;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -110,14 +114,24 @@ public class login extends AppCompatActivity {
                     if(usersData.getUsername().equals(username)){
                         if(usersData.getPassword().equals(password)){
                             Toast.makeText(login.this, "logged in Successfully...", Toast.LENGTH_SHORT).show();
+                            if(userSelected=="Student"){
+                                Intent intent = new Intent(login.this, MainActivity.class);
+                                SharedPreferences sharedPreferences = getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
+                                SharedPreferences.Editor et=sharedPreferences.edit();
+                                et.putString("user_name",et_USERNAME.getText().toString());
+                                et.commit();
+                                startActivity(intent);
+                                finish();
+                            }else {
+                                Intent intent = new Intent(login.this, main_tutor.class);
+                                SharedPreferences sharedPreferences = getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
+                                SharedPreferences.Editor et=sharedPreferences.edit();
+                                et.putString("user_name",et_USERNAME.getText().toString());
+                                et.commit();
+                                startActivity(intent);
+                                finish();
+                            }
 
-                            Intent intent = new Intent(login.this, MainActivity.class);
-                            SharedPreferences sharedPreferences = getSharedPreferences("username", Context.MODE_PRIVATE);
-                            SharedPreferences.Editor et=sharedPreferences.edit();
-                            et.putString("user_name",et_USERNAME.getText().toString());
-                            et.commit();
-                            startActivity(intent);
-                            finish();
                         }
                         else {
                             Toast.makeText(login.this, "Password is incorrect", Toast.LENGTH_SHORT).show();

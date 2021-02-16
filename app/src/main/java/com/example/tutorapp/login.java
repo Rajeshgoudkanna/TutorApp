@@ -1,4 +1,7 @@
-package com.example.tutorapp.model;
+package com.example.tutorapp;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,12 +16,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.tutorapp.Activities.MainActivity;
 import com.example.tutorapp.Activities.Utils;
-import com.example.tutorapp.R;
-import com.example.tutorapp.registration;
+import com.example.tutorapp.model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -113,19 +113,21 @@ public class login extends AppCompatActivity {
                     if(usersData.getUsername().equals(username)){
                         if(usersData.getPassword().equals(password)){
                             Toast.makeText(login.this, "logged in Successfully...", Toast.LENGTH_SHORT).show();
-                            if(userSelected=="Student"){
+                            if(userSelected=="Student") {
                                 Intent intent = new Intent(login.this, MainActivity.class);
                                 SharedPreferences sharedPreferences = getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
-                                SharedPreferences.Editor et=sharedPreferences.edit();
-                                et.putString("user_name",et_USERNAME.getText().toString());
+                                SharedPreferences.Editor et = sharedPreferences.edit();
+                                et.putString("user_name", et_USERNAME.getText().toString());
+                                et.putString("user_role", userSelected);
                                 et.commit();
                                 startActivity(intent);
                                 finish();
                             }else {
                                 Intent intent = new Intent(login.this, main_tutor.class);
                                 SharedPreferences sharedPreferences = getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
-                                SharedPreferences.Editor et=sharedPreferences.edit();
-                                et.putString("user_name",et_USERNAME.getText().toString());
+                                SharedPreferences.Editor et = sharedPreferences.edit();
+                                et.putString("user_name", et_USERNAME.getText().toString());
+                                et.putString("user_role", userSelected);
                                 et.commit();
                                 startActivity(intent);
                                 finish();
@@ -145,7 +147,6 @@ public class login extends AppCompatActivity {
                 }
 
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

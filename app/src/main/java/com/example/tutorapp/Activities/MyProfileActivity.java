@@ -1,5 +1,6 @@
 package com.example.tutorapp.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,12 +8,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 
 import com.example.tutorapp.R;
 import com.example.tutorapp.model.User;
@@ -82,7 +85,7 @@ public class MyProfileActivity extends AppCompatActivity {
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(parentDbName).child(user_role).child(session);
                 User users = new User(et_name.getText().toString(), et_phone.getText().toString(), et_pwd.getText().toString(), session, et_email.getText().toString());
                 databaseReference.setValue(users);
-                Toast.makeText(MyProfileActivity.this, "Profile Updated Succussfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(com.example.tutorapp.Activities.MyProfileActivity.this, "Profile Updated Succussfully", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

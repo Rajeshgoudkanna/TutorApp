@@ -17,7 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tutorapp.Activities.Utils;
-import com.example.tutorapp.Activities.MainActivity;
 import com.example.tutorapp.R;
 import com.example.tutorapp.registration;
 import com.google.firebase.database.DataSnapshot;

@@ -21,10 +21,11 @@ import java.util.List;
 public class MyFavouritesAdapter extends BaseAdapter {
     List<Course> ar;
     Context cnt;
-    public MyFavouritesAdapter(List<Course> ar, Context cnt){
-        this.ar=ar;
-        this.cnt=cnt;
+    public MyFavouritesAdapter(List<Course> ar, Context cnt) {
+        this.ar = ar;
+        this.cnt = cnt;
     }
+
     @Override
     public int getCount() {
         return ar.size();

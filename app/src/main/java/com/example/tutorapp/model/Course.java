@@ -13,6 +13,16 @@ public class Course {
     private String CendDate;
     private String Cimage;
 
+    private String posted_by;
+
+    public String getPosted_by() {
+        return posted_by;
+    }
+
+    public void setPosted_by(String posted_by) {
+        this.posted_by = posted_by;
+    }
+
     public String getImage() {
         return Cimage;
     }

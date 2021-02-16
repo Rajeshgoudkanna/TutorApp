@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Tutor</string>
-
     <string-array name="status">
         <item>Please Choose Status</item>
         <item>Available</item>

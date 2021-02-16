@@ -9,9 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TutorApp">
+        <activity android:name=".Activities.UserCourseViewActivity"></activity>
+        <activity android:name=".Activities.TutorViewCoursesActivity" />
+        <activity android:name=".Activities.CourseActivity" />
+        <activity android:name=".Activities.CourseDetailsActivity" />
+        <activity android:name=".Activities.MyProfileActivity" />
+        <activity android:name=".Activities.ChangePasswordActivity" />
+        <activity android:name=".main_tutor" />
         <activity android:name=".registration" />
         <activity android:name=".login" />
         <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

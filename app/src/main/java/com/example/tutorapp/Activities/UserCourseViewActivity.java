@@ -44,13 +44,15 @@ public class UserCourseViewActivity extends Fragment implements View.OnClickList
     String id = "";
 
     ProgressBar progressBar;
+    List<String> fileArray = new ArrayList<String>();
     StorageReference mStorageReference;
     DatabaseReference mDatabaseReference;
-    List<String> fileArray = new ArrayList<String>();
     List<Files> CompletefileArray = new ArrayList<Files>();
-    ArrayAdapter filesAdpater;
-    View view;
     private FirebaseDatabase database;
+    ArrayAdapter filesAdpater;
+
+    View view;
+
 
     public static UserCourseViewActivity viewCourses() {
         UserCourseViewActivity fragment = new UserCourseViewActivity();
@@ -71,7 +73,7 @@ public class UserCourseViewActivity extends Fragment implements View.OnClickList
         courseFiles = view.findViewById(R.id.files_listView);
 
         Bundle bundle = getActivity().getIntent().getExtras();
-        id = "21021509551871";
+        id = bundle.getString("selected");
 
         database = FirebaseDatabase.getInstance();
 
@@ -124,7 +126,6 @@ public class UserCourseViewActivity extends Fragment implements View.OnClickList
                     }
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Toast.makeText(view.getContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
@@ -150,7 +151,6 @@ public class UserCourseViewActivity extends Fragment implements View.OnClickList
                 }
                 courseFiles.setAdapter(filesAdpater);
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Toast.makeText(view.getContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();

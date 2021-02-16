@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.example.tutorapp.Activities.ChangePasswordActivity;
 import com.example.tutorapp.Activities.MyProfileActivity;
+import com.example.tutorapp.Activities.Utils;
 import com.example.tutorapp.R;
 import com.example.tutorapp.login;
 import com.google.android.gms.tasks.Continuation;
@@ -84,18 +85,18 @@ public class AddFragment extends Fragment {
         setHasOptionsMenu(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Add Course");
 
-        sharedPreferences =getActivity().getSharedPreferences("username", Context.MODE_PRIVATE);
-        session = sharedPreferences.getString("user_name", "def-val");
+        sharedPreferences = getActivity().getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
+        session = sharedPreferences.getString("user_name", "");
 
         CourseImagesRef = FirebaseStorage.getInstance().getReference().child("Course Images");
         CoursesRef = FirebaseDatabase.getInstance().getReference().child("Courses");
 
-        et_name=(EditText)view.findViewById(R.id.et_cname);
-        spin_status=(Spinner)view.findViewById(R.id.spin_cstatus);
-        et_desc=(EditText)view.findViewById(R.id.et_cdesc);
-        et_price=(EditText)view.findViewById(R.id.et_cprice);
-        spin_category=(Spinner)view.findViewById(R.id.spin_category);
-        spin_condition=(Spinner)view.findViewById(R.id.spin_condition);
+        et_name = (EditText) view.findViewById(R.id.et_cname);
+        spin_status = (Spinner) view.findViewById(R.id.spin_cstatus);
+        et_desc = (EditText) view.findViewById(R.id.et_cdesc);
+        et_price = (EditText) view.findViewById(R.id.et_cprice);
+        spin_category = (Spinner) view.findViewById(R.id.spin_category);
+        spin_condition = (Spinner) view.findViewById(R.id.spin_condition);
         image_view=(ImageView)view.findViewById(R.id.image_view);
         tv_end_date=(TextView)view.findViewById(R.id.tv_end_date);
         tv_start_date=(TextView)view.findViewById(R.id.tv_start_date);
@@ -327,8 +328,7 @@ public class AddFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<Void> task)
                     {
-                        if (task.isSuccessful())
-                        {
+                        if (task.isSuccessful()) {
                             Toast.makeText(getActivity(), "Course is added successfully..", Toast.LENGTH_SHORT).show();
                         } else {
                             String message = task.getException().toString();
@@ -337,7 +337,6 @@ public class AddFragment extends Fragment {
                     }
                 });
     }
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.main_menu, menu);

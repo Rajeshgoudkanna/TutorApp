@@ -1,13 +1,23 @@
 package com.example.tutorapp.Fragments;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -18,12 +28,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
+import com.example.tutorapp.Activities.ChangePasswordActivity;
+import com.example.tutorapp.Activities.MyProfileActivity;
 import com.example.tutorapp.R;
+import com.example.tutorapp.login;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -73,7 +81,8 @@ public class AddFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         view = inflater.inflate(R.layout.fragment_add, container, false);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Add Course");
+        setHasOptionsMenu(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Add Course");
 
         sharedPreferences =getActivity().getSharedPreferences("username", Context.MODE_PRIVATE);
         session = sharedPreferences.getString("user_name", "def-val");
@@ -321,14 +330,39 @@ public class AddFragment extends Fragment {
                         if (task.isSuccessful())
                         {
                             Toast.makeText(getActivity(), "Course is added successfully..", Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        {
+                        } else {
                             String message = task.getException().toString();
                             Toast.makeText(getActivity(), "Error: " + message, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.main_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.logout:
+                startActivity(new Intent(getContext(), login.class));
+                getActivity().finish();
+                return true;
+            case R.id.my_profile:
+                startActivity(new Intent(getContext(), MyProfileActivity.class));
+                return true;
+            case R.id.change_pwd:
+                startActivity(new Intent(getContext(), ChangePasswordActivity.class));
+                return true;
+
+
+            default:
+                break;
+        }
+        return false;
     }
 
 }

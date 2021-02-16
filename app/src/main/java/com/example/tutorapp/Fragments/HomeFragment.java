@@ -2,6 +2,10 @@ package com.example.tutorapp.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -10,9 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
+import com.example.tutorapp.Activities.ChangePasswordActivity;
 import com.example.tutorapp.Activities.CourseActivity;
 import com.example.tutorapp.Activities.MyProfileActivity;
 import com.example.tutorapp.R;
@@ -92,6 +94,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 return true;
             case R.id.my_profile:
                 startActivity(new Intent(getContext(), MyProfileActivity.class));
+                return true;
+            case R.id.change_pwd:
+                startActivity(new Intent(getContext(), ChangePasswordActivity.class));
                 return true;
 
             default:

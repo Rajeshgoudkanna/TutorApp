@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5FAE2">
+
+    <TableLayout
+        android:id="@+id/tlContactDetails"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="100dp"
+
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:src="@drawable/select_product_image" />
+
+        <TableRow android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="3dp"
+                android:layout_weight="0.2"
+                android:padding="5dp"
+                android:text="Course Name"
+                android:textColor="#32302E" />
+
+            <EditText
+                android:id="@+id/et_cname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/edittext"
+                android:padding="10dp"
+                android:textColor="#32302E"
+                android:textSize="15dp" />
+        </TableRow>
+
+        <TableRow android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="3dp"
+                android:layout_weight="0.2"
+                android:padding="5dp"
+                android:text="Price"
+                android:textColor="#32302E" />
+
+            <EditText
+                android:id="@+id/et_cprice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/edittext"
+                android:padding="10dp"
+                android:textColor="#32302E "
+                android:textSize="15dp" />
+        </TableRow>
+
+
+        <TableRow android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="3dp"
+                android:layout_weight="0.2"
+                android:padding="5dp"
+                android:text=" course Description"
+                android:textColor="#32302E" />
+
+            <EditText
+                android:id="@+id/et_cdesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/edittext"
+                android:maxLength="30"
+                android:padding="10dp"
+                android:textColor="#32302E "
+                android:textSize="15dp" />
+        </TableRow>
+
+        <TableRow android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="0.2"
+                android:padding="5dp"
+                android:text="Class Type"
+                android:textColor="#32302E" />
+
+            <Spinner
+                android:id="@+id/spin_condition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/edittext"
+                android:entries="@array/condition"
+                android:padding="10dp"
+                android:scrollbars="none"
+                android:singleLine="true"
+                android:spinnerMode="dropdown"
+                android:textColor="#32302E "
+                android:textSize="15dp" />
+        </TableRow>
+
+
+        <TableRow android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="0.2"
+                android:padding="5dp"
+                android:text="Slot Status "
+                android:textColor="#32302E" />
+
+            <Spinner
+                android:id="@+id/spin_cstatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/edittext"
+                android:entries="@array/status"
+                android:padding="10dp"
+                android:scrollbars="none"
+                android:singleLine="true"
+                android:spinnerMode="dropdown"
+                android:textColor="#32302E "
+                android:textSize="15dp" />
+        </TableRow>
+
+
+        <TableRow android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="3dp"
+                android:layout_weight="0.2"
+                android:padding="5dp"
+                android:text="Category"
+                android:textColor="#32302E" />
+
+            <Spinner
+                android:id="@+id/spin_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/edittext"
+                android:entries="@array/category"
+                android:padding="10dp"
+                android:scrollbars="none"
+                android:singleLine="true"
+                android:spinnerMode="dropdown"
+                android:textColor="#32302E "
+                android:textSize="15dp" />
+        </TableRow>
+        <LinearLayout
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_start_date"
+                android:layout_weight="1"
+                android:background="@drawable/login_edittext"
+                android:gravity="center"
+
+                android:textColor="#111111 "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Course Start Date" />
+
+            <TextView
+                android:id="@+id/tv_end_date"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:background="@drawable/login_edittext"
+                android:gravity="center"
+                android:text="Course End Date"
+                android:textColor="#111111 " />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="50dp"
+            android:backgroundTint="#F8D9C8"
+            android:text="Post Course"
+            android:textAllCaps="false"
+            android:textColor="#131212" />
+
+
+    </TableLayout>
+
+</ScrollView>
+

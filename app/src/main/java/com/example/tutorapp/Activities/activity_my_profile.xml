@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tlContactDetails" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#E2F2FA">
+
+    <TableRow android:padding="5dp">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical" android:layout_marginLeft="15dp"
+            android:layout_weight="0.5" android:padding="5dp" android:text="Name "
+            android:textColor="#111111" />
+
+        <EditText android:id="@+id/et_name" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_margin="10dp"
+            android:layout_weight="1" android:background="@drawable/edittext" android:padding="10dp"
+            android:textColor="#111111 " android:textSize="15dp" />
+    </TableRow>
+
+    <TableRow android:padding="5dp">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical" android:layout_marginLeft="15dp"
+            android:layout_weight="0.5" android:padding="5dp" android:text="Email  "
+            android:textColor="#111111" />
+
+        <EditText android:id="@+id/et_email" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_margin="10dp"
+            android:layout_weight="1" android:background="@drawable/edittext" android:padding="10dp"
+            android:textColor="#111111 " android:textSize="15dp" />
+    </TableRow>
+
+
+    <TableRow android:padding="5dp">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical" android:layout_marginLeft="15dp"
+            android:layout_weight="0.5" android:padding="5dp" android:text="Phone No  "
+            android:textColor="#111111" />
+
+        <EditText android:id="@+id/et_phone" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_margin="10dp"
+            android:layout_weight="1" android:background="@drawable/edittext" android:padding="10dp"
+            android:textColor="#111111 " android:textSize="15dp" />
+    </TableRow>
+
+    <TableRow android:padding="5dp" android:visibility="gone">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp" android:layout_weight="0.5" android:padding="5dp"
+            android:text="Password " android:textColor="#111111" />
+
+        <EditText android:id="@+id/et_pwd" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_margin="10dp"
+            android:layout_weight="1" android:background="@drawable/edittext" android:padding="10dp"
+            android:textColor="#111111 " android:textSize="15dp" />
+    </TableRow>
+
+    <TableRow android:padding="5dp">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical" android:layout_marginLeft="15dp"
+            android:layout_weight="0.5" android:padding="5dp" android:text="Username  "
+            android:textColor="#111111" />
+
+        <EditText android:id="@+id/et_username" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_margin="10dp"
+            android:layout_weight="1" android:background="@drawable/edittext"
+            android:editable="false" android:padding="10dp" android:textColor="#111111 "
+            android:textSize="15dp" />
+    </TableRow>
+
+
+    <Button android:id="@+id/btn_update_profile" android:layout_width="match_parent"
+        android:layout_height="38dp" android:layout_marginLeft="50dp"
+        android:layout_marginTop="40dp" android:layout_marginRight="50dp"
+        android:background="@drawable/button_rounded" android:text="Update Profile"
+        android:textAllCaps="false" android:textColor="#FFFFFF" />
+
+
+</TableLayout>
+

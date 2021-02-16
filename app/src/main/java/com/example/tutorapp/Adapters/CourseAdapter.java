@@ -1,7 +1,9 @@
 package com.example.tutorapp.Adapters;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +16,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-
 import com.bumptech.glide.Glide;
 import com.example.tutorapp.Activities.CourseDetailsActivity;
+import com.example.tutorapp.Activities.Utils;
 import com.example.tutorapp.R;
+import com.example.tutorapp.Activities.TutorViewCoursesActivity;
 import com.example.tutorapp.model.Course;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,11 +37,14 @@ public class CourseAdapter extends BaseAdapter {
     List<Course> ar;
     Context cnt;
     String session;
-    DatabaseReference RootRef,getfav;
+    DatabaseReference RootRef, getfav;
+    SharedPreferences sharedPreferences;
+    String user_role;
+
     public CourseAdapter(Context cnt, List<Course> ar, String session) {
         this.ar = ar;
         this.cnt = cnt;
-        this.session=session;
+        this.session = session;
     }
 
     @Override
@@ -60,8 +66,10 @@ public class CourseAdapter extends BaseAdapter {
     public View getView(final int pos, View view, ViewGroup viewGroup) {
         LayoutInflater obj1 = (LayoutInflater) cnt.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View obj2 = obj1.inflate(R.layout.adapter_course, null);
-
-        ImageView image_view=(ImageView)obj2.findViewById(R.id.image_view);
+        sharedPreferences = obj2.getContext().getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
+        session = sharedPreferences.getString("user_name", "def-val");
+        user_role = sharedPreferences.getString("user_role", "def-role");
+        ImageView image_view = (ImageView) obj2.findViewById(R.id.image_view);
         Glide.with(cnt).load(ar.get(pos).getImage()).into(image_view);
 
         TextView tv_cname = (TextView) obj2.findViewById(R.id.tv_cname);
@@ -69,24 +77,37 @@ public class CourseAdapter extends BaseAdapter {
         TextView tv_category = (TextView) obj2.findViewById(R.id.tv_category);
         tv_category.setText(ar.get(pos).getCcategory());
 
-        RatingBar tv_rating=(RatingBar)obj2.findViewById(R.id.tv_rating);
+        TextView tv_course_id = (TextView) obj2.findViewById(R.id.tv_course_id);
+        tv_course_id.setText(ar.get(pos).getPid());
 
-        CardView cvParent=(CardView)obj2.findViewById(R.id.cvParent);
+        RatingBar tv_rating = (RatingBar) obj2.findViewById(R.id.tv_rating);
+
+        CardView cvParent = (CardView) obj2.findViewById(R.id.cvParent);
         cvParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(cnt, CourseDetailsActivity.class);
-                intent.putExtra("Cname",ar.get(pos).getCname());
-                intent.putExtra("Cstatus",ar.get(pos).getCstatus());
-                intent.putExtra("Cprice",ar.get(pos).getCprice());
-                intent.putExtra("Cdescription",ar.get(pos).getCdescription());
-                intent.putExtra("Ctype",ar.get(pos).getCtype());
-                intent.putExtra("Ccategory",ar.get(pos).getCcategory());
-                intent.putExtra("CstartDate",ar.get(pos).getCstartDate());
-                intent.putExtra("CendDate",ar.get(pos).getCendDate());
-                intent.putExtra("Cimage",ar.get(pos).getCimage());
-                intent.putExtra("pid",ar.get(pos).getPid());
-                cnt.startActivity(intent);
+
+                if (user_role.equals("Tutor")) {
+
+                    String selected_item = ((TextView) view.findViewById(R.id.tv_course_id)).getText().toString();
+                    Intent intent = new Intent(cnt, TutorViewCoursesActivity.class);
+                    intent.putExtra("selected", selected_item);
+                    cnt.startActivity(intent);
+
+                } else {
+                    Intent intent = new Intent(cnt, CourseDetailsActivity.class);
+                    intent.putExtra("Cname", ar.get(pos).getCname());
+                    intent.putExtra("Cstatus", ar.get(pos).getCstatus());
+                    intent.putExtra("Cprice", ar.get(pos).getCprice());
+                    intent.putExtra("Cdescription", ar.get(pos).getCdescription());
+                    intent.putExtra("Ctype", ar.get(pos).getCtype());
+                    intent.putExtra("Ccategory", ar.get(pos).getCcategory());
+                    intent.putExtra("CstartDate", ar.get(pos).getCstartDate());
+                    intent.putExtra("CendDate", ar.get(pos).getCendDate());
+                    intent.putExtra("Cimage", ar.get(pos).getCimage());
+                    intent.putExtra("pid", ar.get(pos).getPid());
+                    cnt.startActivity(intent);
+                }
             }
         });
 

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 
 import com.bumptech.glide.Glide;
+
 import com.example.tutorapp.Activities.CourseDetailsActivity;
 import com.example.tutorapp.R;
 import com.example.tutorapp.model.Course;

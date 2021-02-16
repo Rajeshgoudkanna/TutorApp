@@ -9,6 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#F5FAE2"
         tools:context=".activities.login">
 
         <FrameLayout
@@ -17,6 +18,7 @@
             android:layout_height="match_parent"
             android:layout_above="@+id/navigation"
             android:animateLayoutChanges="true">
+
 
         </FrameLayout>
 
@@ -29,7 +31,7 @@
             app:itemIconTint="@color/nav_item_state_list"
             app:itemTextColor="@color/nav_item_state_list"
             app:labelVisibilityMode="labeled"
-            app:menu="@menu/bottom_navigation_items" />
+            app:menu="@menu/bottom_navigation_items_tutor" />
 
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

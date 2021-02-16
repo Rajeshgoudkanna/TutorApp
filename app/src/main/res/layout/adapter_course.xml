@@ -36,6 +36,17 @@
                 android:maxLength="15"
                 android:text="Category"
                 android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tv_course_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="25dp"
+                android:maxLength="15"
+                android:text="id"
+                android:textSize="13dp"
+                android:visibility="invisible" />
         </LinearLayout>
 
         <LinearLayout

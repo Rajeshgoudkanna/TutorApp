@@ -3,9 +3,7 @@ package com.example.tutorapp.Activities;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -13,9 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tutorapp.R;
 import com.example.tutorapp.model.Course;
@@ -31,7 +27,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserCourseViewActivity extends Fragment implements View.OnClickListener {
+public class UserCourseViewActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView startDate;
     TextView endDate;
@@ -41,39 +37,36 @@ public class UserCourseViewActivity extends Fragment implements View.OnClickList
     TextView courseName;
     TextView courseID;
     ListView courseFiles;
-    String id = "";
+    String id="";
 
     ProgressBar progressBar;
-    List<String> fileArray = new ArrayList<String>();
+
+    private FirebaseDatabase database;
     StorageReference mStorageReference;
     DatabaseReference mDatabaseReference;
-    List<Files> CompletefileArray = new ArrayList<Files>();
-    private FirebaseDatabase database;
+
+    List<String> fileArray=new ArrayList<String>();
+    List<Files> CompletefileArray=new ArrayList<Files>();
     ArrayAdapter filesAdpater;
 
-    View view;
 
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_user_course_view);
 
-    public static UserCourseViewActivity viewCourses() {
-        UserCourseViewActivity fragment = new UserCourseViewActivity();
-        return fragment;
-    }
+        startDate=findViewById(R.id.start_date);
+        endDate=findViewById(R.id.end_date);
+        courseCategory=findViewById(R.id.category_txt);
+        courseCondition=findViewById(R.id.condition_txt);
+        courseDescription=findViewById(R.id.txt_description);
+        courseName=findViewById(R.id.course_name);
+        courseID=findViewById(R.id.course_id);
+        courseFiles=findViewById(R.id.files_listView);
 
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
-        view = inflater.inflate(R.layout.activity_user_course_view, container, false);
-        startDate = view.findViewById(R.id.start_date);
-        endDate = view.findViewById(R.id.end_date);
-        courseCategory = view.findViewById(R.id.category_txt);
-        courseCondition = view.findViewById(R.id.condition_txt);
-        courseDescription = view.findViewById(R.id.txt_description);
-        courseName = view.findViewById(R.id.course_name);
-        courseID = view.findViewById(R.id.course_id);
-        courseFiles = view.findViewById(R.id.files_listView);
-
-        Bundle bundle = getActivity().getIntent().getExtras();
-        id = bundle.getString("selected");
+        Bundle bundle =  getIntent().getExtras();
+        if (bundle != null) {
+            id =bundle.getString("selected");
+        }
 
         database = FirebaseDatabase.getInstance();
 
@@ -81,9 +74,9 @@ public class UserCourseViewActivity extends Fragment implements View.OnClickList
 
         mStorageReference = FirebaseStorage.getInstance().getReference();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("uploads");
-        progressBar = (ProgressBar) view.findViewById(R.id.progressbar);
+        progressBar = (ProgressBar) findViewById(R.id.progressbar);
 
-        filesAdpater = new ArrayAdapter(view.getContext(), R.layout.files_list_item, fileArray);
+        filesAdpater=new ArrayAdapter(this, R.layout.files_list_item,fileArray);
 
         getCourseFiles(id);
 
@@ -100,8 +93,6 @@ public class UserCourseViewActivity extends Fragment implements View.OnClickList
             }
         });
 
-        return view;
-
     }
 
 
@@ -113,9 +104,9 @@ public class UserCourseViewActivity extends Fragment implements View.OnClickList
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot singleSnapshot : dataSnapshot.getChildren()) {
+                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
                     Course tutor_course = singleSnapshot.getValue(Course.class);
-                    if (tutor_course.getPid().equals(id)) {
+                    if(tutor_course.getPid().equals(id)) {
                         startDate.setText(tutor_course.getCstartDate());
                         endDate.setText(tutor_course.getCendDate());
                         courseDescription.setText(tutor_course.getCdescription());
@@ -128,13 +119,13 @@ public class UserCourseViewActivity extends Fragment implements View.OnClickList
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(view.getContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),databaseError.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
     }
 
 
-    public void getCourseFiles(String course_id) {
+    public void getCourseFiles(String course_id){
 
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
         DatabaseReference ref = database.child("Files");
@@ -142,9 +133,9 @@ public class UserCourseViewActivity extends Fragment implements View.OnClickList
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot singleSnapshot : dataSnapshot.getChildren()) {
+                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
                     Files new_file = singleSnapshot.getValue(Files.class);
-                    if (new_file.getCourseID().equals(id)) {
+                    if(new_file.getCourseID().equals(id)) {
                         fileArray.add(new_file.getFile_name());
                         CompletefileArray.add(new_file);
                     }
@@ -153,7 +144,7 @@ public class UserCourseViewActivity extends Fragment implements View.OnClickList
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(view.getContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),databaseError.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
 

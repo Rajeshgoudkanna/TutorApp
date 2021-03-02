@@ -1,12 +1,12 @@
 package com.example.tutorapp.Activities;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.example.tutorapp.Fragments.HomeFragment;
 import com.example.tutorapp.R;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                         switch (item.getItemId()) {
 
                             case R.id.action_home:
-                                selectedFragment =  com.example.tutorapp.Fragments.HomeFragment.homeFragment();
+                                selectedFragment =  HomeFragment.homeFragment();
                                 break;
                             case R.id.action_search:
                                 selectedFragment = com.example.tutorapp.Fragments.searchFragment.searchFragment();
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout,  com.example.tutorapp.Fragments.HomeFragment.homeFragment());
+        transaction.replace(R.id.frame_layout,  HomeFragment.homeFragment());
         transaction.commit();
     }
 }

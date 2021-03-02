@@ -38,9 +38,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
+
 public class TutorViewCoursesActivity extends AppCompatActivity implements View.OnClickListener {
 
-    final static int PICK_PDF_CODE = 2342;
     TextView startDate;
     TextView endDate;
     TextView courseDescription;
@@ -51,15 +52,21 @@ public class TutorViewCoursesActivity extends AppCompatActivity implements View.
     ListView courseFiles;
     Button uploadFile;
     EditText fileName;
-    String id = "";
+    String id="";
+
+    final static int PICK_PDF_CODE = 2342;
     ProgressBar progressBar;
+
+    private FirebaseDatabase database;
     StorageReference mStorageReference;
     DatabaseReference mDatabaseReference;
-    List<String> fileArray = new ArrayList<String>();
-    List<Files> CompletefileArray = new ArrayList<Files>();
+
+    List<String> fileArray=new ArrayList<String>();
+    List<Files> CompletefileArray=new ArrayList<Files>();
     ArrayAdapter filesAdpater;
     String downloadImageUrl;
-    private FirebaseDatabase database;
+
+
 
     public static TutorViewCoursesActivity viewTutorCourses() {
         TutorViewCoursesActivity fragment = new TutorViewCoursesActivity();
@@ -70,19 +77,19 @@ public class TutorViewCoursesActivity extends AppCompatActivity implements View.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutor_view_courses);
 
-        startDate = findViewById(R.id.start_date);
-        endDate = findViewById(R.id.end_date);
-        courseCategory = findViewById(R.id.category_txt);
-        courseCondition = findViewById(R.id.condition_txt);
-        courseDescription = findViewById(R.id.txt_description);
-        courseName = findViewById(R.id.course_name);
-        courseID = findViewById(R.id.course_id);
-        courseFiles = findViewById(R.id.files_listView);
-        fileName = findViewById(R.id.file_name);
-        uploadFile = findViewById(R.id.buttonUploadFile);
+        startDate=findViewById(R.id.start_date);
+        endDate=findViewById(R.id.end_date);
+        courseCategory=findViewById(R.id.category_txt);
+        courseCondition=findViewById(R.id.condition_txt);
+        courseDescription=findViewById(R.id.txt_description);
+        courseName=findViewById(R.id.course_name);
+        courseID=findViewById(R.id.course_id);
+        courseFiles=findViewById(R.id.files_listView);
+        fileName=findViewById(R.id.file_name);
+        uploadFile=findViewById(R.id.buttonUploadFile);
         uploadFile.setOnClickListener(this);
         Bundle bundle = getIntent().getExtras();
-        id = bundle.getString("selected");
+        id=bundle.getString("selected");
 
         database = FirebaseDatabase.getInstance();
 
@@ -92,7 +99,7 @@ public class TutorViewCoursesActivity extends AppCompatActivity implements View.
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("uploads");
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
 
-        filesAdpater = new ArrayAdapter(this, R.layout.files_list_item, fileArray);
+        filesAdpater=new ArrayAdapter(this, R.layout.files_list_item,fileArray);
 
         getCourseFiles(id);
 
@@ -122,7 +129,6 @@ public class TutorViewCoursesActivity extends AppCompatActivity implements View.
 //            startActivity(intent);
 //            return;
 //        }
-
         //creating an intent for file chooser
         Intent intent = new Intent();
         intent.setType("application/pdf");
@@ -136,14 +142,18 @@ public class TutorViewCoursesActivity extends AppCompatActivity implements View.
         //when the user choses the file
         if (requestCode == PICK_PDF_CODE && resultCode == RESULT_OK && data != null && data.getData() != null) {
             //if a file is selected
-            if (fileName.getText().toString().length() == 0) {
+            if(fileName.getText().toString().length()==0)
+            {
                 fileName.setError("Required");
-            } else {
+            }
+            else
+            {
                 if (data.getData() != null) {
                     //uploading the file
                     uploadFile(data.getData());
                     // Toast.makeText(getApplicationContext(), data.getData().toString(), Toast.LENGTH_SHORT).show();
-                } else {
+                }
+                else{
                     Toast.makeText(getApplicationContext(), "No file chosen", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -153,29 +163,33 @@ public class TutorViewCoursesActivity extends AppCompatActivity implements View.
     private void uploadFile(Uri data) {
 
         progressBar.setVisibility(View.VISIBLE);
-        String file_id = String.valueOf(System.currentTimeMillis());
-        StorageReference sRef = mStorageReference.child("uploads/" + file_id + ".pdf");
+        String file_id=String.valueOf(System.currentTimeMillis());
+        StorageReference sRef = mStorageReference.child("uploads/" + file_id+ ".pdf");
 
 
         final UploadTask uploadTask = sRef.putFile(data);
 
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
-            public void onFailure(@NonNull Exception e) {
+            public void onFailure(@NonNull Exception e)
+            {
                 String message = e.toString();
                 Toast.makeText(getApplicationContext(), "Error: " + message, Toast.LENGTH_SHORT).show();
             }
         })
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
+                    {
                         Toast.makeText(getApplicationContext(), "File Uploaded", Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.GONE);
 
                         Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                             @Override
-                            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                                if (!task.isSuccessful()) {
+                            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception
+                            {
+                                if (!task.isSuccessful())
+                                {
                                     throw task.getException();
                                 }
                                 downloadImageUrl = sRef.getDownloadUrl().toString();
@@ -183,8 +197,10 @@ public class TutorViewCoursesActivity extends AppCompatActivity implements View.
                             }
                         }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                             @Override
-                            public void onComplete(@NonNull Task<Uri> task) {
-                                if (task.isSuccessful()) {
+                            public void onComplete(@NonNull Task<Uri> task)
+                            {
+                                if (task.isSuccessful())
+                                {
                                     downloadImageUrl = task.getResult().toString();
                                     Files upload = new Files(id, downloadImageUrl,
                                             fileName.getText().toString());
@@ -195,7 +211,6 @@ public class TutorViewCoursesActivity extends AppCompatActivity implements View.
                     }
                 });
     }
-
     private void getdata(String id) {
 
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
@@ -204,9 +219,9 @@ public class TutorViewCoursesActivity extends AppCompatActivity implements View.
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot singleSnapshot : dataSnapshot.getChildren()) {
+                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
                     Course tutor_course = singleSnapshot.getValue(Course.class);
-                    if (tutor_course.getPid().equals(id)) {
+                    if(tutor_course.getPid().equals(id)) {
                         startDate.setText(tutor_course.getCstartDate());
                         endDate.setText(tutor_course.getCendDate());
                         courseDescription.setText(tutor_course.getCdescription());
@@ -217,15 +232,15 @@ public class TutorViewCoursesActivity extends AppCompatActivity implements View.
                     }
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),databaseError.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    public void sendFile(Files new_file) {
+    public void sendFile(Files new_file)
+    {
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
         SimpleDateFormat for_id = new SimpleDateFormat("yyMMddHHmmssSS");
         String file_id = for_id.format(new Date());
@@ -248,7 +263,7 @@ public class TutorViewCoursesActivity extends AppCompatActivity implements View.
 
     }
 
-    public void getCourseFiles(String course_id) {
+    public void getCourseFiles(String course_id){
 
         fileArray.clear();
 
@@ -258,19 +273,18 @@ public class TutorViewCoursesActivity extends AppCompatActivity implements View.
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot singleSnapshot : dataSnapshot.getChildren()) {
+                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
                     Files new_file = singleSnapshot.getValue(Files.class);
-                    if (new_file.getCourseID().equals(id)) {
+                    if(new_file.getCourseID().equals(id)) {
                         fileArray.add(new_file.getFile_name());
                         CompletefileArray.add(new_file);
                     }
                 }
                 courseFiles.setAdapter(filesAdpater);
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),databaseError.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
 

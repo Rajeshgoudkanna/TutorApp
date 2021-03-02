@@ -41,18 +41,12 @@ public class SearchAdapter extends BaseAdapter {
     String session;
     DatabaseReference RootRef, getfav;
     SharedPreferences sharedPreferences;
-
-    public SearchAdapter(List<Course> datapojo, Context cnt) {
-        this.courseDataPojo = datapojo;
-        this.cnt = cnt;
-        this.ar = new ArrayList<Course>();
-        this.ar.addAll(datapojo);
-    }
+    private DatabaseReference ProductsRef;
 
 
     @Override
     public int getCount() {
-        return  ar.size();
+        return ar.size();
     }
 
     @Override
@@ -65,7 +59,12 @@ public class SearchAdapter extends BaseAdapter {
         return i;
     }
 
-    private DatabaseReference ProductsRef;
+    public SearchAdapter(List<Course> datapojo, Context cnt) {
+        this.courseDataPojo = datapojo;
+        this.cnt = cnt;
+        this.ar = new ArrayList<Course>();
+        this.ar.addAll(datapojo);
+    }
 
     @Override
     public View getView(final int pos, View view, ViewGroup viewGroup) {
@@ -195,7 +194,6 @@ public class SearchAdapter extends BaseAdapter {
             }
         });
     }
-
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         ar.clear();
@@ -203,8 +201,7 @@ public class SearchAdapter extends BaseAdapter {
             ar.addAll(courseDataPojo);
         } else {
             for (Course wp : courseDataPojo) {
-                if (wp.getCname().toLowerCase(Locale.getDefault()).contains(charText))
-                {
+                if (wp.getCname().toLowerCase(Locale.getDefault()).contains(charText)) {
                     ar.add(wp);
                 }
             }

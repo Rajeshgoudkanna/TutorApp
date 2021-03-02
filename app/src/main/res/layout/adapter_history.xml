@@ -45,8 +45,8 @@
                 android:layout_marginLeft="25dp"
                 android:maxLength="15"
                 android:text="id"
-                android:visibility="invisible"
-                android:textSize="13dp" />
+                android:textSize="13dp"
+                android:visibility="invisible" />
         </LinearLayout>
 
         <LinearLayout
@@ -75,15 +75,11 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="35dp"
                 android:layout_marginBottom="2dp"
-                android:layout_weight="1"
                 android:isIndicator="true"
                 android:max="5"
-                android:paddingTop="2dp"
                 android:rating="4.5"
-                android:scaleX="1"
-                android:scaleY="1"
-                android:transformPivotX="0dp"
-                android:transformPivotY="0dp" />
+                android:paddingTop="2dp"
+                android:theme="@style/RatingBar" />
 
         </LinearLayout>
     </LinearLayout>

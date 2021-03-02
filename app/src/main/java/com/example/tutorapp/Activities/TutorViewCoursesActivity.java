@@ -38,8 +38,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static android.app.Activity.RESULT_OK;
-
 public class TutorViewCoursesActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView startDate;

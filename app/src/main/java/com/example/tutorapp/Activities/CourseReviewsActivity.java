@@ -29,6 +29,7 @@ public class CourseReviewsActivity extends AppCompatActivity {
     List<Rating> a1;
     Float rate = 0f;
     RatingBar ratingBar;
+
     ValueEventListener valueEventListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -51,7 +52,6 @@ public class CourseReviewsActivity extends AppCompatActivity {
                 Toast.makeText(CourseReviewsActivity.this, "No data Found", Toast.LENGTH_SHORT).show();
             }
         }
-
         @Override
         public void onCancelled(DatabaseError databaseError) {
 
@@ -95,7 +95,6 @@ public class CourseReviewsActivity extends AppCompatActivity {
         });
 
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

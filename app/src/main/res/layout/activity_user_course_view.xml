@@ -5,33 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activities.TutorViewCoursesActivity">
+    android:background="@drawable/mainbackground"
+    tools:context=".Activities.UserCourseViewActivity">
 
-    <TextView
-        android:id="@+id/course_name"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Course Name"
-        android:textColor="#000000"
-        android:textSize="30dp"></TextView>
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/course_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Course Name"
+            android:textColor="#000000"
+            android:textSize="30dp"></TextView>
+
+    </LinearLayout>
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/course_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:text="ID"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:fontFamily="sans-serif"
-        android:text="ID"
         android:textColor="#000000"
+        android:fontFamily="sans-serif"
         android:textSize="15dp"></TextView>
-
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -40,8 +47,8 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:layout_marginTop="20dp">
 
         <TableRow
             android:layout_height="30dp"
@@ -50,21 +57,21 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:text="Start Date"
                 android:textColor="#000000"
+                android:layout_marginLeft="10dp"
                 android:textSize="15dp"></TextView>
 
             <TextView
-                android:id="@+id/start_date"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:fontFamily="sans-serif-black"
                 android:gravity="right"
+                android:id="@+id/start_date"
                 android:text="*"
+                android:layout_marginRight="10dp"
+                android:fontFamily="sans-serif-black"
                 android:textColor="#000000"></TextView>
         </TableRow>
 
@@ -75,21 +82,21 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:text="End Date"
                 android:textColor="#000000"
+                android:layout_marginLeft="10dp"
                 android:textSize="15dp"></TextView>
 
             <TextView
-                android:id="@+id/end_date"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:fontFamily="sans-serif-black"
                 android:gravity="right"
+                android:id="@+id/end_date"
                 android:text="*"
+                android:layout_marginRight="10dp"
+                android:fontFamily="sans-serif-black"
                 android:textColor="#000000"></TextView>
         </TableRow>
 
@@ -100,21 +107,21 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:text="Category"
                 android:textColor="#000000"
+                android:layout_marginLeft="10dp"
                 android:textSize="15dp"></TextView>
 
             <TextView
-                android:id="@+id/category_txt"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:fontFamily="sans-serif-black"
                 android:gravity="right"
+                android:id="@+id/category_txt"
                 android:text="*"
+                android:layout_marginRight="10dp"
+                android:fontFamily="sans-serif-black"
                 android:textColor="#000000"></TextView>
         </TableRow>
 
@@ -125,21 +132,21 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:text="Condition"
                 android:textColor="#000000"
+                android:layout_marginLeft="10dp"
                 android:textSize="15dp"></TextView>
 
             <TextView
-                android:id="@+id/condition_txt"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:fontFamily="sans-serif-black"
                 android:gravity="right"
+                android:id="@+id/condition_txt"
                 android:text="*"
+                android:layout_marginRight="10dp"
+                android:fontFamily="sans-serif-black"
                 android:textColor="#000000"></TextView>
         </TableRow>
 
@@ -150,38 +157,35 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:text="Description: "
                 android:textColor="#000000"
+                android:layout_marginLeft="10dp"
                 android:textSize="15dp"></TextView>
         </TableRow>
-
         <TableRow android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/txt_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:maxLines="4"
+                android:scrollbars="vertical"
+                android:id="@+id/txt_description"
+                android:text="*"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="15dp"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-black"
                 android:lineSpacingExtra="5dp"
-                android:maxLines="4"
                 android:scrollbarFadeDuration="0"
-                android:scrollbars="vertical"
-                android:text="*"
                 android:textColor="#000000" />
             >
         </TableRow>
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#9E51484C" />
-
         <ProgressBar
             android:id="@+id/progressbar"
             android:layout_width="wrap_content"
@@ -192,8 +196,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:fontFamily="sans-serif-black"
             android:text="Files"
@@ -201,13 +205,13 @@
             android:textSize="20dp"></TextView>
 
         <ListView
-            android:id="@+id/files_listView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="0dp"
             android:layout_weight="1"
+            android:id="@+id/files_listView"
             android:divider="@null"
             android:listSelector="@android:color/transparent"
+            android:layout_marginTop="0dp"
             android:padding="10dp"></ListView>
     </TableLayout>
 </LinearLayout>

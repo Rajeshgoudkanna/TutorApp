@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5FAE2">
+
+    android:background="@drawable/mainbackground">
 
     <TableLayout
         android:id="@+id/tlContactDetails"
@@ -119,35 +120,6 @@
                 android:textSize="15dp" />
         </TableRow>
 
-
-        <TableRow android:padding="5dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_weight="0.2"
-                android:padding="5dp"
-                android:text="Slot Status "
-                android:textColor="#32302E" />
-
-            <Spinner
-                android:id="@+id/spin_cstatus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/edittext"
-                android:entries="@array/status"
-                android:padding="10dp"
-                android:scrollbars="none"
-                android:singleLine="true"
-                android:spinnerMode="dropdown"
-                android:textColor="#32302E "
-                android:textSize="15dp" />
-        </TableRow>
-
-
         <TableRow android:padding="5dp">
 
             <TextView
@@ -213,10 +185,10 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="50dp"
-            android:backgroundTint="#F8D9C8"
+            android:backgroundTint="#10100F"
             android:text="Post Course"
             android:textAllCaps="false"
-            android:textColor="#131212" />
+            android:textColor="#F8F2F2" />
 
 
     </TableLayout>

@@ -69,21 +69,18 @@
 
             <RatingBar
                 android:id="@+id/tv_rating"
-                style="@style/customRatingBar"
+                style="@android:style/Widget.DeviceDefault.Light.RatingBar.Indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="35dp"
                 android:layout_marginBottom="2dp"
                 android:layout_weight="1"
-                android:isIndicator="true"
                 android:max="5"
-                android:paddingTop="2dp"
+                android:numStars="5"
                 android:rating="4.5"
-                android:scaleX="1"
-                android:scaleY="1"
-                android:transformPivotX="0dp"
-                android:transformPivotY="0dp" />
+                android:stepSize="1.0"
+                android:theme="@style/RatingBar" />
 
             <ImageView
                 android:id="@+id/img_fav"

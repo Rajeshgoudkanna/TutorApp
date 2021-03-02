@@ -92,6 +92,7 @@ public class CourseAdapter extends BaseAdapter {
 //        query.addListenerForSingleValueEvent(valueEventListener);
 
 
+
         tv_rating.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -221,8 +222,8 @@ public class CourseAdapter extends BaseAdapter {
                 if (!(dataSnapshot.child("Favorite Courses").child(session).child(id).exists())) {
                     HashMap<String, Object> productMap = new HashMap<>();
                     productMap.put("pid", id);
-                    productMap.put("Cimage",image);
-                    productMap.put("Cname",name);
+                    productMap.put("Cimage", image);
+                    productMap.put("Cname", name);
                     productMap.put("Cdescription", description);
                     productMap.put("Cprice", price);
                     productMap.put("Ctype", type);

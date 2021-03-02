@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mainbackground"
+    android:fillViewport="true">
+
+    <TableLayout
+        android:id="@+id/tlContactDetails"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/mainbackground">
+
+
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/lableRateMe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="course rating "
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#111111" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:numStars="5"
+                android:stepSize="1.0" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+
+                android:padding="5dp"
+                android:text="Review "
+                android:textColor="#111111" />
+
+            <EditText
+                android:id="@+id/et_course_review"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                android:hint="Write Review"
+
+                android:textColor="#111111 "
+                android:textSize="15dp" />
+
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/button_rounded"
+                android:text="Submit"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+
+    </TableLayout>
+
+</ScrollView>

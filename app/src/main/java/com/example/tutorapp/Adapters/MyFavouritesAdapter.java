@@ -21,6 +21,7 @@ import java.util.List;
 public class MyFavouritesAdapter extends BaseAdapter {
     List<Course> ar;
     Context cnt;
+
     public MyFavouritesAdapter(List<Course> ar, Context cnt) {
         this.ar = ar;
         this.cnt = cnt;
@@ -58,13 +59,14 @@ public class MyFavouritesAdapter extends BaseAdapter {
                 intent.putExtra("Cprice", ar.get(pos).getCprice().toString());
                 intent.putExtra("Cdescription", ar.get(pos).getCdescription().toString());
                 intent.putExtra("Ctype", ar.get(pos).getCtype().toString());
-                intent.putExtra("Cstatus", ar.get(pos).getCstatus().toString());
+//                intent.putExtra("Cstatus", ar.get(pos).getCstatus().toString());
                 intent.putExtra("Ccategory", ar.get(pos).getCcategory().toString());
                 intent.putExtra("Cimage", ar.get(pos).getImage().toString());
                 intent.putExtra("pid", ar.get(pos).getPid().toString());
                 intent.putExtra("posted_by", ar.get(pos).getPid().toString());
                 intent.putExtra("CstartDate", ar.get(pos).getCstartDate().toString());
                 intent.putExtra("CendDate", ar.get(pos).getCendDate().toString());
+                cnt.startActivity(intent);
             }
         });
         return obj2;

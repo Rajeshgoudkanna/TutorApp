@@ -7,7 +7,7 @@
     android:background="#EFE482"
     android:backgroundTint="#33FFFFFF"
     android:backgroundTintMode="screen"
-    tools:context=".SplashActivity">
+    tools:context=".SplashScreen">
 
     <TextView
         android:id="@+id/textView4"

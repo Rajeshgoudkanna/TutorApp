@@ -2,14 +2,18 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#F8D9C8">
+
+    android:background="@drawable/mainbackground">
+    <!--android:backgroundTint="#F8D9C8">-->
 
     <LinearLayout
         android:layout_width="match_parent"
 
         android:layout_height="match_parent"
-        android:background="#F5FAE2"
+        android:backgroundTint="#F8D9C8"
         android:orientation="vertical">
+        <!--android:background="#F5FAE2"-->
+
 
         <ImageView
             android:layout_width="150dp"
@@ -179,9 +183,9 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="40dp"
-            android:backgroundTint="#F8D9C8"
+            android:backgroundTint="#0E0E0E"
             android:text="Register"
-            android:textColor="#131212" />
+            android:textColor="#F8F4F4" />
 
     </LinearLayout>
 </ScrollView>

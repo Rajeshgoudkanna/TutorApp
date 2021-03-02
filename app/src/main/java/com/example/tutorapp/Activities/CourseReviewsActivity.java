@@ -30,6 +30,37 @@ public class CourseReviewsActivity extends AppCompatActivity {
     Float rate = 0f;
     RatingBar ratingBar;
 
+<<<<<<< HEAD
+=======
+    ValueEventListener valueEventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            a1.clear();
+            if (dataSnapshot.exists()) {
+                int count = 0;
+                Float rateChange = 0f;
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Rating reviews = snapshot.getValue(Rating.class);
+                    a1.add(reviews);
+                    rateChange += Float.parseFloat(reviews.getRating());
+                    count += 1;
+                }
+                rate = rateChange / count;
+                ratingBar.setRating(rate);
+                CourseReviewsAdapter courseReviewsAdapter = new CourseReviewsAdapter(a1, CourseReviewsActivity.this);
+                list_view.setAdapter(courseReviewsAdapter);
+
+            } else {
+                Toast.makeText(CourseReviewsActivity.this, "No data Found", Toast.LENGTH_SHORT).show();
+            }
+        }
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    };
+
+>>>>>>> origin/master
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +70,13 @@ public class CourseReviewsActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+<<<<<<< HEAD
         a1= new ArrayList<>();
         list_view=(ListView)findViewById(R.id.list_view);
+=======
+        a1 = new ArrayList<>();
+        list_view = (ListView) findViewById(R.id.list_view);
+>>>>>>> origin/master
         ratingBar = findViewById(R.id.tv_rating);
         final DatabaseReference RootRef;
 
@@ -55,8 +91,12 @@ public class CourseReviewsActivity extends AppCompatActivity {
                             .equalTo(getIntent().getStringExtra("pid"));
 
                     query.addListenerForSingleValueEvent(valueEventListener);
+<<<<<<< HEAD
                 }
                 else{
+=======
+                } else {
+>>>>>>> origin/master
                     Toast.makeText(CourseReviewsActivity.this, "No Data found..", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -68,6 +108,7 @@ public class CourseReviewsActivity extends AppCompatActivity {
         });
 
     }
+<<<<<<< HEAD
     ValueEventListener valueEventListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -96,6 +137,8 @@ public class CourseReviewsActivity extends AppCompatActivity {
 
         }
     };
+=======
+>>>>>>> origin/master
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

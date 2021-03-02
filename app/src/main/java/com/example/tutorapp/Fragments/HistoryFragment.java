@@ -20,11 +20,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.tutorapp.Activities.ChangePasswordActivity;
 import com.example.tutorapp.Activities.MyProfileActivity;
-import com.example.tutorapp.Activities.TutorViewCoursesActivity;
+import com.example.tutorapp.Activities.StudentRating;
+import com.example.tutorapp.Activities.TutorViewRating;
 import com.example.tutorapp.Activities.Utils;
 import com.example.tutorapp.Adapters.HistoryAdapter;
 import com.example.tutorapp.R;
@@ -44,15 +44,14 @@ public class HistoryFragment extends Fragment {
     List<Course> a1;
     SharedPreferences sharedPreferences;
     String session;
+    String user_role;
     HistoryAdapter historyAdapter;
     View view;
-    String user_role;
 
     public static HistoryFragment historyFragment() {
         HistoryFragment fragment = new HistoryFragment();
         return fragment;
     }
-
     ValueEventListener valueEventListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -68,7 +67,6 @@ public class HistoryFragment extends Fragment {
                 Toast.makeText(getContext(), "No data Found", Toast.LENGTH_SHORT).show();
             }
         }
-
         @Override
         public void onCancelled(DatabaseError databaseError) {
 
@@ -83,8 +81,8 @@ public class HistoryFragment extends Fragment {
         setHasOptionsMenu(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("History");
         sharedPreferences = getActivity().getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
-        session = sharedPreferences.getString("user_name", "");
-        user_role = sharedPreferences.getString("user_role", "");
+        session = sharedPreferences.getString("user_name", "def-val");
+        user_role = sharedPreferences.getString("user_role", "def-role");
         a1 = new ArrayList<>();
         gridview = (GridView) view.findViewById(R.id.gridview);
         Query query = null;
@@ -101,27 +99,19 @@ public class HistoryFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
-                Fragment selectedFragment = null;
-
                 String selected_item = ((TextView) v.findViewById(R.id.tv_course_id)).getText().toString();
 
                 if (user_role.equals("Student")) {
-                    selectedFragment = com.example.tutorapp.Activities.UserCourseViewActivity.viewCourses();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("selected", selected_item);
-                    selectedFragment.setArguments(bundle);
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
-                    transaction.commit();
+                    Intent student_intent = new Intent(getActivity(), StudentRating.class);
+                    student_intent.putExtra("selectedItem", selected_item);
+                    startActivity(student_intent);
                 }
                 if (user_role.equals("Tutor")) {
 
-                    Intent intent = new Intent(getContext(), TutorViewCoursesActivity.class);
-                    intent.putExtra("selected", selected_item);
-                    startActivity(intent);
+                    Intent tutor_intent = new Intent(getActivity(), TutorViewRating.class);
+                    tutor_intent.putExtra("selectedItem", selected_item);
+                    view.getContext().startActivity(tutor_intent);
                 }
-
-
             }
         });
         return view;
@@ -151,5 +141,6 @@ public class HistoryFragment extends Fragment {
         }
         return false;
     }
+
 
 }

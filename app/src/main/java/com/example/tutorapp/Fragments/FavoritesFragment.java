@@ -4,12 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,10 +14,15 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import com.example.tutorapp.Activities.ChangePasswordActivity;
 import com.example.tutorapp.Activities.MyProfileActivity;
 import com.example.tutorapp.Activities.Utils;
-import com.example.tutorapp.Adapters.HistoryAdapter;
+import com.example.tutorapp.Adapters.MyFavouritesAdapter;
 import com.example.tutorapp.R;
 import com.example.tutorapp.login;
 import com.example.tutorapp.model.Course;
@@ -41,7 +41,7 @@ public class FavoritesFragment extends Fragment {
     List<Course> a1;
     SharedPreferences sharedPreferences;
     String session;
-    HistoryAdapter historyAdapter;
+    MyFavouritesAdapter favouritesAdapter;
     View view;
 
     public static FavoritesFragment favoriteFragment() {
@@ -49,22 +49,6 @@ public class FavoritesFragment extends Fragment {
         return fragment;
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
-
-        view = inflater.inflate(R.layout.fragment_history, container, false);
-        setHasOptionsMenu(true);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Favorite Courses");
-        sharedPreferences =getActivity().getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
-        session = sharedPreferences.getString("user_name", "def-val");
-        a1= new ArrayList<>();
-        gridview=(GridView)view.findViewById(R.id.gridview);
-        Query query = FirebaseDatabase.getInstance().getReference("Favorite Courses").child(session);
-        query.addListenerForSingleValueEvent(valueEventListener);
-        return view;
-    }
     ValueEventListener valueEventListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -74,8 +58,9 @@ public class FavoritesFragment extends Fragment {
                     Course homeDataPojo = snapshot.getValue(Course.class);
                     a1.add(homeDataPojo);
                 }
-                historyAdapter = new HistoryAdapter(a1,getActivity());
-                gridview.setAdapter(historyAdapter);
+
+                favouritesAdapter = new MyFavouritesAdapter(a1, getActivity());
+                gridview.setAdapter(favouritesAdapter);
             } else {
                 Toast.makeText(getContext(), "No data Found", Toast.LENGTH_SHORT).show();
             }
@@ -87,6 +72,23 @@ public class FavoritesFragment extends Fragment {
         }
     };
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+
+        view = inflater.inflate(R.layout.fragment_history, container, false);
+        setHasOptionsMenu(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Favorite Courses");
+        sharedPreferences = getActivity().getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
+        Log.i("session user fav", "name" + session);
+        session = sharedPreferences.getString("user_name", "def-val");
+        a1= new ArrayList<>();
+        gridview=(GridView)view.findViewById(R.id.gridview);
+        Query query = FirebaseDatabase.getInstance().getReference("Favorite Courses").child(session);
+        query.addListenerForSingleValueEvent(valueEventListener);
+        return view;
+    }
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.main_menu, menu);

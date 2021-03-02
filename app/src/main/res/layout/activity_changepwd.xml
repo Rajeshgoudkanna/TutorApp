@@ -2,8 +2,9 @@
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E2F2FA"
+    android:background="@drawable/mainbackground"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- android:background="#E2F2FA"-->
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
@@ -44,17 +45,16 @@
             android:layout_height="wrap_content" />
 
 
-
         <Button
             android:id="@+id/btn_update"
             android:text="Update Password"
             android:layout_marginTop="30dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:textColor="#131212"
+            android:backgroundTint="#151515"
             android:layout_width="match_parent"
             android:layout_height="43dp"
-            android:backgroundTint="#9FF1A2" />
+            android:textColor="#FFFBFB" />
 
     </LinearLayout>
 </ScrollView>

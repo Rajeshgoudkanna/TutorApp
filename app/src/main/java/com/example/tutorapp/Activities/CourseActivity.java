@@ -55,7 +55,7 @@ public class CourseActivity extends AppCompatActivity {
         progressDialog=new ProgressDialog(this);
         progressDialog.setTitle("Please Wait data is being Loaded");
         progressDialog.show();
-        Query query=FirebaseDatabase.getInstance().getReference("Courses");
+        Query query = FirebaseDatabase.getInstance().getReference("Courses");
 
         query = query.orderByChild("Ccategory").equalTo(cat_name);
 

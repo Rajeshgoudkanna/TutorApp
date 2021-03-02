@@ -1,18 +1,11 @@
 package com.example.tutorapp.Fragments;
 
 import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -27,6 +20,11 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.example.tutorapp.Activities.ChangePasswordActivity;
 import com.example.tutorapp.Activities.MyProfileActivity;
@@ -92,14 +90,14 @@ public class AddFragment extends Fragment {
         CoursesRef = FirebaseDatabase.getInstance().getReference().child("Courses");
 
         et_name = (EditText) view.findViewById(R.id.et_cname);
-        spin_status = (Spinner) view.findViewById(R.id.spin_cstatus);
+
         et_desc = (EditText) view.findViewById(R.id.et_cdesc);
         et_price = (EditText) view.findViewById(R.id.et_cprice);
         spin_category = (Spinner) view.findViewById(R.id.spin_category);
         spin_condition = (Spinner) view.findViewById(R.id.spin_condition);
-        image_view=(ImageView)view.findViewById(R.id.image_view);
-        tv_end_date=(TextView)view.findViewById(R.id.tv_end_date);
-        tv_start_date=(TextView)view.findViewById(R.id.tv_start_date);
+        image_view = (ImageView) view.findViewById(R.id.image_view);
+        tv_end_date = (TextView) view.findViewById(R.id.tv_end_date);
+        tv_start_date = (TextView) view.findViewById(R.id.tv_start_date);
         tv_start_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -200,7 +198,7 @@ public class AddFragment extends Fragment {
     {
 
         name=et_name.getText().toString();
-        status=spin_status.getSelectedItem().toString();
+//        status=spin_status.getSelectedItem().toString();
         price=et_price.getText().toString();
         condition=spin_condition.getSelectedItem().toString();
         description=et_desc.getText().toString();
@@ -211,27 +209,22 @@ public class AddFragment extends Fragment {
         {
             Toast.makeText(getActivity(), "Course image is mandatory...", Toast.LENGTH_SHORT).show();
         }
-        else if (TextUtils.isEmpty(name))
-        {
+        else if (TextUtils.isEmpty(name)) {
             Toast.makeText(getActivity(), "Please write Course name...", Toast.LENGTH_SHORT).show();
         }
-        else if (spin_status.getSelectedItem().toString().equals("Please Choose Status"))
-        {
-            Toast.makeText(getActivity(), "Please Choose Course Type...", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty(price))
-        {
+//        else if (spin_status.getSelectedItem().toString().equals("Please Choose Status"))
+//        {
+//            Toast.makeText(getActivity(), "Please Choose Course Type...", Toast.LENGTH_SHORT).show();
+//        }
+        else if (TextUtils.isEmpty(price)) {
             Toast.makeText(getActivity(), "Please write Course Price...", Toast.LENGTH_SHORT).show();
-        }
-
-        else if (TextUtils.isEmpty(description))
-        {
+        } else if (TextUtils.isEmpty(description)) {
             Toast.makeText(getActivity(), "Please write Course Description...", Toast.LENGTH_SHORT).show();
         }
 
         else if (spin_condition.getSelectedItem().toString().equals("Please Choose course type"))
         {
-            Toast.makeText(getActivity(), "Please Choose Course status...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Please Choose Course type...", Toast.LENGTH_SHORT).show();
         }
 
         else if (spin_category.getSelectedItem().toString().equals("Please Choose course Category"))
@@ -318,7 +311,7 @@ public class AddFragment extends Fragment {
         productMap.put("Cprice", price);
         productMap.put("Cdescription", description);
         productMap.put("Ctype", condition);
-        productMap.put("Cstatus", status);
+//        productMap.put("Cstatus", status);
         productMap.put("posted_by", session);
         productMap.put("CstartDate",tv_start_date.getText().toString());
         productMap.put("CendDate",tv_end_date.getText().toString());
@@ -326,8 +319,7 @@ public class AddFragment extends Fragment {
         CoursesRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task)
-                    {
+                    public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getActivity(), "Course is added successfully..", Toast.LENGTH_SHORT).show();
                         } else {

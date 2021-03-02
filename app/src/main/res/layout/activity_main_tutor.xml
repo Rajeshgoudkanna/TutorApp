@@ -17,7 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/navigation"
-            android:animateLayoutChanges="true">
+            android:animateLayoutChanges="true"
+            android:background="@drawable/mainbackground">
 
 
         </FrameLayout>
@@ -27,9 +28,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/heading_color1"
-            app:itemIconTint="@color/nav_item_state_list"
-            app:itemTextColor="@color/nav_item_state_list"
+            android:background="@color/common_google_signin_btn_text_dark_focused"
+            app:itemIconTint="@color/desc_color1"
+            app:itemTextColor="@color/desc_color1"
             app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_navigation_items_tutor" />
 

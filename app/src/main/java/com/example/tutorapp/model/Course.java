@@ -7,13 +7,11 @@ public class Course {
     private String Cprice;
     private String Cdescription;
     private String Ctype;
-    private String Cstatus;
+    //    private String Cstatus;
     private String Ccategory;
     private String CstartDate;
     private String CendDate;
     private String Cimage;
-
-    private String posted_by;
 
     public String getPosted_by() {
         return posted_by;
@@ -22,6 +20,8 @@ public class Course {
     public void setPosted_by(String posted_by) {
         this.posted_by = posted_by;
     }
+
+    private String posted_by;
 
     public String getImage() {
         return Cimage;
@@ -34,13 +34,12 @@ public class Course {
     public Course() {
     }
 
-    public Course(String cname, String pid, String cprice, String cdescription, String ctype, String cstatus, String ccategory, String cstartDate, String cendDate, String cimage) {
+    public Course(String cname, String pid, String cprice, String cdescription, String ctype, String ccategory, String cstartDate, String cendDate, String cimage) {
         this.Cname = cname;
         this.pid = pid;
         this.Cprice = cprice;
         this.Cdescription = cdescription;
         this.Ctype = ctype;
-        this.Cstatus = cstatus;
         this.Ccategory = ccategory;
         this.CstartDate = cstartDate;
         this.CendDate = cendDate;
@@ -95,13 +94,13 @@ public class Course {
         Ctype = ctype;
     }
 
-    public String getCstatus() {
-        return Cstatus;
-    }
-
-    public void setCstatus(String cstatus) {
-        Cstatus = cstatus;
-    }
+//    public String getCstatus() {
+//        return Cstatus;
+//    }
+//
+//    public void setCstatus(String cstatus) {
+//        Cstatus = cstatus;
+//    }
 
     public String getCcategory() {
         return Ccategory;

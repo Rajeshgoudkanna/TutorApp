@@ -3,6 +3,12 @@ package com.example.tutorapp.Fragments;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -14,11 +20,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import com.example.tutorapp.Activities.ChangePasswordActivity;
 import com.example.tutorapp.Activities.MyProfileActivity;
@@ -45,37 +46,11 @@ public class searchFragment extends Fragment {
     SearchAdapter searchAdapter;
     EditText et_search;
     View view;
-
     public static searchFragment searchFragment() {
         searchFragment fragment = new searchFragment();
         return fragment;
     }
 
-
-    ValueEventListener valueEventListener = new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            progressDialog.dismiss();
-            a1.clear();
-            if (dataSnapshot.exists()) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Course homeDataPojo = snapshot.getValue(Course.class);
-                    a1.add(homeDataPojo);
-                }
-                searchAdapter = new SearchAdapter(a1, getActivity());
-                gridview.setAdapter(searchAdapter);
-
-            } else {
-                Toast.makeText(getContext(), "No data Found", Toast.LENGTH_SHORT).show();
-            }
-        }
-
-        @Override
-        public void onCancelled(DatabaseError databaseError) {
-            progressDialog.dismiss();
-
-        }
-    };
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -83,8 +58,8 @@ public class searchFragment extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_search, container, false);
         setHasOptionsMenu(true);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Search");
-        progressDialog = new ProgressDialog(getContext());
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Search");
+        progressDialog=new ProgressDialog(getContext());
 
 
         gridview=(GridView)view.findViewById(R.id.gridview);
@@ -117,6 +92,31 @@ public class searchFragment extends Fragment {
 
         return view;
     }
+
+    ValueEventListener valueEventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            progressDialog.dismiss();
+            a1.clear();
+            if (dataSnapshot.exists()) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Course homeDataPojo = snapshot.getValue(Course.class);
+                    a1.add(homeDataPojo);
+                }
+                searchAdapter = new SearchAdapter(a1, getActivity());
+                gridview.setAdapter(searchAdapter);
+
+            }
+            else {
+                Toast.makeText(getContext(), "No data Found", Toast.LENGTH_SHORT).show();
+            }
+        }
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+            progressDialog.dismiss();
+
+        }
+    };
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.main_menu, menu);

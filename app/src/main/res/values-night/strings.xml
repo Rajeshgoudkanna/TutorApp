@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Tutor-App</string>
-
+    <string name="app_name">Tutor</string>
     <string-array name="status">
         <item>Please Choose Status</item>
         <item>Available</item>
@@ -8,6 +7,7 @@
     </string-array>
 
     <string-array name="condition">
+        <item>Please Choose course type</item>
         <item>Class Type</item>
         <item>Hybrid</item>
         <item>Online</item>

@@ -1,5 +1,7 @@
 package com.example.tutorapp.Activities;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -10,8 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tutorapp.Adapters.CourseReviewsAdapter;
+import com.example.tutorapp.Adapters.CourseReviewsAdapter;
 import com.example.tutorapp.R;
 import com.example.tutorapp.model.Rating;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,6 +25,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class CourseReviewsActivity extends AppCompatActivity {
@@ -30,37 +36,6 @@ public class CourseReviewsActivity extends AppCompatActivity {
     Float rate = 0f;
     RatingBar ratingBar;
 
-<<<<<<< HEAD
-=======
-    ValueEventListener valueEventListener = new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            a1.clear();
-            if (dataSnapshot.exists()) {
-                int count = 0;
-                Float rateChange = 0f;
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Rating reviews = snapshot.getValue(Rating.class);
-                    a1.add(reviews);
-                    rateChange += Float.parseFloat(reviews.getRating());
-                    count += 1;
-                }
-                rate = rateChange / count;
-                ratingBar.setRating(rate);
-                CourseReviewsAdapter courseReviewsAdapter = new CourseReviewsAdapter(a1, CourseReviewsActivity.this);
-                list_view.setAdapter(courseReviewsAdapter);
-
-            } else {
-                Toast.makeText(CourseReviewsActivity.this, "No data Found", Toast.LENGTH_SHORT).show();
-            }
-        }
-        @Override
-        public void onCancelled(DatabaseError databaseError) {
-
-        }
-    };
-
->>>>>>> origin/master
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,13 +45,8 @@ public class CourseReviewsActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-<<<<<<< HEAD
         a1= new ArrayList<>();
         list_view=(ListView)findViewById(R.id.list_view);
-=======
-        a1 = new ArrayList<>();
-        list_view = (ListView) findViewById(R.id.list_view);
->>>>>>> origin/master
         ratingBar = findViewById(R.id.tv_rating);
         final DatabaseReference RootRef;
 
@@ -91,12 +61,8 @@ public class CourseReviewsActivity extends AppCompatActivity {
                             .equalTo(getIntent().getStringExtra("pid"));
 
                     query.addListenerForSingleValueEvent(valueEventListener);
-<<<<<<< HEAD
                 }
                 else{
-=======
-                } else {
->>>>>>> origin/master
                     Toast.makeText(CourseReviewsActivity.this, "No Data found..", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -108,7 +74,6 @@ public class CourseReviewsActivity extends AppCompatActivity {
         });
 
     }
-<<<<<<< HEAD
     ValueEventListener valueEventListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -137,8 +102,6 @@ public class CourseReviewsActivity extends AppCompatActivity {
 
         }
     };
-=======
->>>>>>> origin/master
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

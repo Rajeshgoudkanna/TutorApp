@@ -1,8 +1,5 @@
 package com.example.tutorapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,6 +12,9 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tutorapp.Activities.MainActivity;
 import com.example.tutorapp.Activities.Utils;
@@ -42,11 +42,11 @@ public class login extends AppCompatActivity {
         getSupportActionBar().setTitle("Tutor App");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        tv_username = (TextView) findViewById(R.id.tv_username);
-        tv_password = (TextView) findViewById(R.id.tv_password);
-        tv_forgetpwd = (TextView) findViewById(R.id.tv_forgetpwd);
-        tv_newuser = (TextView) findViewById(R.id.tv_newuser);
-        tv_signup = (TextView) findViewById(R.id.tv_signup);
+        tv_username=(TextView)findViewById(R.id.tv_username);
+        tv_password=(TextView)findViewById(R.id.tv_password);
+        tv_forgetpwd=(TextView)findViewById(R.id.tv_forgetpwd);
+        tv_newuser=(TextView)findViewById(R.id.tv_newuser);
+        tv_signup=(TextView)findViewById(R.id.tv_signup);
         radioGroup = (RadioGroup) findViewById(R.id.usergroup);
 
         //  sharedPreferences.edit().clear().commit();
@@ -54,9 +54,10 @@ public class login extends AppCompatActivity {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checked) {
-                if (checked == R.id.radioButton) {
+                if(checked == R.id.radioButton){
                     userSelected = "Tutor";
-                } else if (checked == R.id.radioButton2) {
+                }
+                else if(checked == R.id.radioButton2){
                     userSelected = "Student";
                 }
 
@@ -104,6 +105,7 @@ public class login extends AppCompatActivity {
     private void AllowAccessToAccount(final String username, final String password) {
 
 
+
         // sharedPreferences.edit().clear().commit();
 
         final DatabaseReference RootRef;
@@ -112,29 +114,30 @@ public class login extends AppCompatActivity {
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.child("Users").child(userSelected).child(username).exists()) {
+                if (snapshot.child("Users").child(userSelected).child(username).exists()){
                     User usersData = snapshot.child("Users").child(userSelected).child(username).getValue(User.class);
-                    Log.i("username", "test" + usersData.getUsername());
+                    Log.i("username","test"+usersData.getUsername());
                     if(usersData.getUsername().equals(username)){
                         if(usersData.getPassword().equals(password)){
                             Toast.makeText(login.this, "logged in Successfully...", Toast.LENGTH_SHORT).show();
-                            if (userSelected == "Student") {
+                            if(userSelected=="Student"){
                                 Intent intent = new Intent(login.this, MainActivity.class);
                                 sharedPreferences = getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
-                                SharedPreferences.Editor et = sharedPreferences.edit();
-                                et.putString("user_name", et_USERNAME.getText().toString());
-                                et.putString("user_role", userSelected);
+                                SharedPreferences.Editor et=sharedPreferences.edit();
+                                et.putString("user_name",et_USERNAME.getText().toString());
+                                et.putString("user_role",userSelected);
                                 et.commit();
                                 //for test
                                 Toast.makeText(login.this, sharedPreferences.getString("user_name", ""), Toast.LENGTH_SHORT).show();
                                 startActivity(intent);
                                 finish();
-                            } else {
+                            }
+                            else {
                                 Intent intent = new Intent(login.this, main_tutor.class);
                                 sharedPreferences = getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
-                                SharedPreferences.Editor et = sharedPreferences.edit();
-                                et.putString("user_name", et_USERNAME.getText().toString());
-                                et.putString("user_role", userSelected);
+                                SharedPreferences.Editor et=sharedPreferences.edit();
+                                et.putString("user_name",et_USERNAME.getText().toString());
+                                et.putString("user_role",userSelected);
                                 et.commit();
                                 startActivity(intent);
                                 finish();

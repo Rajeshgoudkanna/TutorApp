@@ -1,14 +1,13 @@
 package com.example.tutorapp.Activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,13 +37,14 @@ public class CourseDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_details);
         sharedPreferences =getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
+        Log.i("session user detail","name"+session);
         session = sharedPreferences.getString("user_name", "def-val");
         getSupportActionBar().setTitle("Enroll Course");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         CoursesRef = FirebaseDatabase.getInstance().getReference();
         tv_name=(TextView)findViewById(R.id.tv_name);
-        tv_status=(TextView)findViewById(R.id.tv_status_value);
+//        tv_status=(TextView)findViewById(R.id.tv_status_value);
         tv_price=(TextView)findViewById(R.id.tv_price_value);
         tv_desc=(TextView)findViewById(R.id.tv_desc);
         tv_type=(TextView)findViewById(R.id.tv_type_value);
@@ -52,7 +52,7 @@ public class CourseDetailsActivity extends AppCompatActivity {
         tv_startDate=(TextView)findViewById(R.id.tv_start_value);
         tv_endDate=(TextView)findViewById(R.id.tv_end_value);
         tv_name.setText(" :"+getIntent().getStringExtra("Cname"));
-        tv_status.setText(" :"+getIntent().getStringExtra("Cstatus"));
+//        tv_status.setText(" :"+getIntent().getStringExtra("Cstatus"));
         tv_price.setText(" :"+getIntent().getStringExtra("Cprice"));
         tv_desc.setText(getIntent().getStringExtra("Cdescription"));
         tv_type.setText(" :"+getIntent().getStringExtra("Ctype"));
@@ -60,12 +60,12 @@ public class CourseDetailsActivity extends AppCompatActivity {
         tv_startDate.setText(getIntent().getStringExtra("CstartDate"));
         tv_endDate.setText(getIntent().getStringExtra("CendDate"));
         btn_enroll=(Button)findViewById(R.id.enroll_button);
-        if (getIntent().getStringExtra("Cstatus").equals("Not Available")) {
-            btn_enroll.setVisibility(View.INVISIBLE);
-        }
-        else  {
-            btn_enroll.setVisibility(View.VISIBLE);
-        }
+//        if (getIntent().getStringExtra("Cstatus").equals("Not Available")) {
+//            btn_enroll.setVisibility(View.INVISIBLE);
+//        }
+//        else  {
+//            btn_enroll.setVisibility(View.VISIBLE);
+//        }
         btn_enroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,7 +77,7 @@ public class CourseDetailsActivity extends AppCompatActivity {
                 courseMap.put("Cprice", getIntent().getStringExtra("Cprice"));
                 courseMap.put("Cdescription", getIntent().getStringExtra("Cdescription"));
                 courseMap.put("Ctype", getIntent().getStringExtra("Ctype"));
-                courseMap.put("Cstatus", getIntent().getStringExtra("Cstatus"));
+//                courseMap.put("Cstatus", getIntent().getStringExtra("Cstatus"));
                 courseMap.put("posted_by", "session");
                 courseMap.put("CstartDate",getIntent().getStringExtra("CstartDate"));
                 courseMap.put("CendDate",getIntent().getStringExtra("CendDate"));

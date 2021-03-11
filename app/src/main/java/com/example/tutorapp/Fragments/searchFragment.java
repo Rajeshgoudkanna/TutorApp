@@ -88,8 +88,6 @@ public class searchFragment extends Fragment {
         });
 
 
-
-
         return view;
     }
 

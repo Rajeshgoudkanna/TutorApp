@@ -29,7 +29,8 @@
                 android:layout_weight="0.2"
                 android:padding="5dp"
                 android:text="Course Name"
-                android:textColor="#32302E" />
+                android:textColor="#32302E"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/et_cname"
@@ -40,7 +41,7 @@
                 android:background="@drawable/edittext"
                 android:padding="10dp"
                 android:textColor="#32302E"
-                android:textSize="15dp" />
+                android:textSize="20dp" />
         </TableRow>
 
         <TableRow android:padding="5dp">
@@ -53,7 +54,8 @@
                 android:layout_weight="0.2"
                 android:padding="5dp"
                 android:text="Price"
-                android:textColor="#32302E" />
+                android:textColor="#32302E"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/et_cprice"
@@ -64,7 +66,7 @@
                 android:background="@drawable/edittext"
                 android:padding="10dp"
                 android:textColor="#32302E "
-                android:textSize="15dp" />
+                android:textSize="20dp" />
         </TableRow>
 
 
@@ -78,7 +80,8 @@
                 android:layout_weight="0.2"
                 android:padding="5dp"
                 android:text=" course Description"
-                android:textColor="#32302E" />
+                android:textColor="#32302E"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/et_cdesc"
@@ -90,7 +93,7 @@
                 android:maxLength="30"
                 android:padding="10dp"
                 android:textColor="#32302E "
-                android:textSize="15dp" />
+                android:textSize="20dp" />
         </TableRow>
 
         <TableRow android:padding="5dp">
@@ -102,7 +105,8 @@
                 android:layout_weight="0.2"
                 android:padding="5dp"
                 android:text="Class Type"
-                android:textColor="#32302E" />
+                android:textColor="#32302E"
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/spin_condition"
@@ -117,7 +121,7 @@
                 android:singleLine="true"
                 android:spinnerMode="dropdown"
                 android:textColor="#32302E "
-                android:textSize="15dp" />
+                android:textSize="20dp" />
         </TableRow>
 
         <TableRow android:padding="5dp">
@@ -130,7 +134,8 @@
                 android:layout_weight="0.2"
                 android:padding="5dp"
                 android:text="Category"
-                android:textColor="#32302E" />
+                android:textColor="#32302E"
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/spin_category"
@@ -145,7 +150,7 @@
                 android:singleLine="true"
                 android:spinnerMode="dropdown"
                 android:textColor="#32302E "
-                android:textSize="15dp" />
+                android:textSize="20dp" />
         </TableRow>
         <LinearLayout
             android:padding="5dp"
@@ -155,14 +160,15 @@
 
             <TextView
                 android:id="@+id/tv_start_date"
-                android:layout_weight="1"
-                android:background="@drawable/login_edittext"
-                android:gravity="center"
-
-                android:textColor="#111111 "
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Course Start Date" />
+                android:layout_weight="1"
+
+                android:background="@drawable/login_edittext"
+                android:gravity="center"
+                android:text="Course Start Date"
+                android:textColor="#111111 "
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/tv_end_date"
@@ -174,7 +180,8 @@
                 android:background="@drawable/login_edittext"
                 android:gravity="center"
                 android:text="Course End Date"
-                android:textColor="#111111 " />
+                android:textColor="#111111 "
+                android:textSize="17sp" />
         </LinearLayout>
 
 
@@ -188,7 +195,8 @@
             android:backgroundTint="#10100F"
             android:text="Post Course"
             android:textAllCaps="false"
-            android:textColor="#F8F2F2" />
+            android:textColor="#F8F2F2"
+            android:textSize="18sp" />
 
 
     </TableLayout>

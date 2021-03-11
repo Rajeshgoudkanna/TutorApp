@@ -58,6 +58,7 @@ public class AddFragment extends Fragment {
     TextView tv_end_date,tv_start_date;
     ImageView image_view;
     Button btn_submit;
+
     private static final int GalleryPick = 1;
     private Uri ImageUri;
     private String productRandomKey, downloadImageUrl;

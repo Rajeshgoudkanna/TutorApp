@@ -44,7 +44,7 @@ public class HistoryAdapter extends BaseAdapter {
         LayoutInflater obj1 = (LayoutInflater) cnt.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View obj2 = obj1.inflate(R.layout.adapter_history, null);
 
-        ImageView image_view = (ImageView) obj2.findViewById(R.id.image_view);
+        ImageView image_view=(ImageView)obj2.findViewById(R.id.image_view);
         Glide.with(cnt).load(ar.get(pos).getImage()).into(image_view);
 
         TextView tv_cname = (TextView) obj2.findViewById(R.id.tv_cname);
@@ -55,7 +55,7 @@ public class HistoryAdapter extends BaseAdapter {
         TextView tv_course_id = (TextView) obj2.findViewById(R.id.tv_course_id);
         tv_course_id.setText(ar.get(pos).getPid());
 
-        RatingBar tv_rating = (RatingBar) obj2.findViewById(R.id.tv_rating);
+        RatingBar tv_rating=(RatingBar)obj2.findViewById(R.id.tv_rating);
 
         return obj2;
     }

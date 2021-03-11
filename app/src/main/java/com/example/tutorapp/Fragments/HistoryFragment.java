@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,14 +20,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.tutorapp.Activities.ChangePasswordActivity;
 import com.example.tutorapp.Activities.MyProfileActivity;
 import com.example.tutorapp.Activities.StudentRating;
-import com.example.tutorapp.Activities.TutorViewCoursesActivity;
 import com.example.tutorapp.Activities.TutorViewRating;
-import com.example.tutorapp.Activities.UserCourseViewActivity;
 import com.example.tutorapp.Activities.Utils;
 import com.example.tutorapp.Adapters.HistoryAdapter;
 import com.example.tutorapp.R;
@@ -52,8 +48,8 @@ public class HistoryFragment extends Fragment  {
     HistoryAdapter historyAdapter;
     View view;
 
-    public static com.example.tutorapp.Fragments.HistoryFragment historyFragment() {
-        com.example.tutorapp.Fragments.HistoryFragment fragment = new com.example.tutorapp.Fragments.HistoryFragment();
+    public static HistoryFragment historyFragment() {
+        HistoryFragment fragment = new HistoryFragment();
         return fragment;
     }
 
@@ -86,7 +82,7 @@ public class HistoryFragment extends Fragment  {
                 String selected_item= ((TextView) v.findViewById(R.id.tv_course_id)).getText().toString();
 
                 if(user_role.equals("Student")){
-                    Intent student_intent=new Intent(getActivity(),StudentRating.class);
+                    Intent student_intent=new Intent(getActivity(), StudentRating.class);
                     student_intent.putExtra("selectedItem",selected_item);
                     startActivity(student_intent);
                 }

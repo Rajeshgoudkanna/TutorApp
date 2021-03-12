@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:background="@drawable/mainbackground"
-    android:orientation="vertical">
+    android:orientation="vertical" >
     <!--android:background="#F5FAE2"-->
 
     <com.mikhaellopez.circularimageview.CircularImageView
@@ -26,7 +26,7 @@
         android:layout_margin="20dp"
         android:text="Tutor App"
         android:textColor="#000000"
-        android:textSize="24sp" />
+        android:textSize="50sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,14 +45,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Tutor" />
+                android:text="Tutor"
+                android:textSize="25sp" />
 
             <RadioButton
                 android:id="@+id/radioButton2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Student/Parent" />
+                android:text="Student/Parent"
+                android:textSize="25sp" />
         </RadioGroup>
     </LinearLayout>
 
@@ -64,7 +66,7 @@
         android:layout_marginLeft="30dp"
         android:text="Username"
         android:textColor="#0B0A0A"
-        android:textSize="16dp" />
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/et_USERNAME"
@@ -74,11 +76,11 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/edittext"
-        android:hint="Username"
         android:gravity="center"
-        android:textSize="20dp"
+        android:hint="Username"
         android:padding="10dp"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/tv_password"
@@ -90,7 +92,7 @@
         android:layout_marginTop="23dp"
         android:text="Password"
         android:textColor="#0C0C0C"
-        android:textSize="16dp" />
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/et_PWD"
@@ -100,12 +102,12 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/edittext"
-        android:hint="Password"
         android:gravity="center"
-        android:textSize="20dp"
+        android:hint="Password"
         android:inputType="textPassword"
         android:padding="10dp"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/tv_forgetpwd"
@@ -129,8 +131,8 @@
         android:layout_marginBottom="10dp"
         android:backgroundTint="#101010"
         android:text="Login"
-        android:textSize="20dp"
-        android:textColor="#FBF6F6" />
+        android:textColor="#FBF6F6"
+        android:textSize="25dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -143,7 +145,7 @@
             android:layout_height="wrap_content"
             android:text="New User ?"
             android:textColor="#01121C"
-            android:textSize="20dp" />
+            android:textSize="25dp" />
 
 
         <TextView
@@ -153,7 +155,7 @@
             android:layout_marginLeft="6dp"
             android:text="Register Here"
             android:textColor="#EA4438"
-            android:textSize="20dp" />
+            android:textSize="25dp" />
 
     </LinearLayout>
 

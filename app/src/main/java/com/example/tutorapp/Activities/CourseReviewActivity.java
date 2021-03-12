@@ -3,6 +3,7 @@ package com.example.tutorapp.Activities;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +30,7 @@ import java.util.HashMap;
 public class CourseReviewActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    TextView tv_name,tv_status,tv_price,tv_reviews,tv_desc,tv_condition,tv_category;
+    TextView tv_name,tv_status,tv_price,tv_reviews,actv_desc,tv_condition,tv_category;
     ImageView image_view;
     Button btn_book;
     SharedPreferences sharedPreferences;

@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Tutor</string>
+    <string-array name="status">
+        <item>Please Choose Status</item>
+        <item>Available</item>
+        <item>Not Available</item>
+    </string-array>
+
+    <string-array name="condition">
+        <item>Please Choose course type</item>
+        <item>Class Type</item>
+        <item>Hybrid</item>
+        <item>Online</item>
+    </string-array>
+
+    <string-array name="category">
+        <item>Please Choose course Category</item>
+        <item>Languages</item>
+        <item>Technologies</item>
+        <item>Programming languages</item>
+        <item>Others</item>
+    </string-array>
+</resources>

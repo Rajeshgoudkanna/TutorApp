@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mainbackground"
+    tools:context=".Activities.StudentRating"
     android:orientation="vertical"
-    tools:context=".Activities.StudentRating">
-
+    android:background="@drawable/mainbackground">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
@@ -24,7 +23,8 @@
             android:layout_marginRight="40dp"
             android:backgroundTint="#151515"
             android:text="write review &amp; rating"
-            android:textColor="#FFFBFB" />
+            android:textColor="#FFFBFB"
+            android:textSize="17sp" />
 
 
     </LinearLayout>
@@ -45,7 +45,8 @@
             android:layout_marginRight="40dp"
             android:backgroundTint="#151515"
             android:text="View Course Files"
-            android:textColor="#FFFBFB" />
+            android:textColor="#FFFBFB"
+            android:textSize="17sp" />
 
 
     </LinearLayout>

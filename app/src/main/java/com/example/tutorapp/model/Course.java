@@ -34,7 +34,7 @@ public class Course {
     public Course() {
     }
 
-    public Course(String cname, String pid, String cprice, String cdescription, String ctype, String ccategory, String cstartDate, String cendDate, String cimage) {
+    public Course(String cname, String pid, String cprice, String cdescription, String ctype,  String ccategory, String cstartDate, String cendDate, String cimage) {
         this.Cname = cname;
         this.pid = pid;
         this.Cprice = cprice;

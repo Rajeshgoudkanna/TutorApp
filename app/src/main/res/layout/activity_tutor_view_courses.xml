@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/mainbackground"
-    tools:context=".Activities.TutorViewCoursesActivity">
+    tools:context=".Activities.TutorViewCoursesActivity"
+    android:background="@drawable/mainbackground">
 
     <TextView
         android:layout_width="match_parent"
@@ -42,8 +42,7 @@
         android:layout_weight="1"
         android:layout_marginTop="20dp"
         >
-        <TableRow
-            android:orientation="horizontal"
+        <TableRow android:orientation="horizontal"
             android:layout_height="30dp">
 
             <TextView
@@ -67,9 +66,7 @@
                 android:textColor="#000000"
                 android:textSize="17sp"></TextView>
         </TableRow>
-
-        <TableRow
-            android:orientation="horizontal"
+        <TableRow android:orientation="horizontal"
             android:layout_marginTop="10dp">
 
             <TextView
@@ -94,8 +91,7 @@
                 android:textSize="17sp"></TextView>
         </TableRow>
 
-        <TableRow
-            android:orientation="horizontal"
+        <TableRow android:orientation="horizontal"
             android:layout_marginTop="10dp">
 
             <TextView
@@ -119,9 +115,7 @@
                 android:textColor="#000000"
                 android:textSize="17sp"></TextView>
         </TableRow>
-
-        <TableRow
-            android:orientation="horizontal"
+        <TableRow android:orientation="horizontal"
             android:layout_marginTop="10dp">
 
             <TextView

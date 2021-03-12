@@ -1,20 +1,24 @@
 
 package com.example.tutorapp.Activities;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tutorapp.Adapters.CourseAdapter;
 import com.example.tutorapp.R;
 import com.example.tutorapp.model.Course;
+import com.example.tutorapp.model.Files;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -55,7 +59,7 @@ public class CourseActivity extends AppCompatActivity {
         progressDialog=new ProgressDialog(this);
         progressDialog.setTitle("Please Wait data is being Loaded");
         progressDialog.show();
-        Query query = FirebaseDatabase.getInstance().getReference("Courses");
+        Query query=FirebaseDatabase.getInstance().getReference("Courses");
 
         query = query.orderByChild("Ccategory").equalTo(cat_name);
 

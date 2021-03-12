@@ -11,8 +11,8 @@
         android:theme="@style/Theme.TutorApp">
         <activity android:name=".Activities.TutorViewRating" />
         <activity android:name=".Activities.StudentRating" />
-        <activity android:name=".Activities.CourseReviewActivity" />
-        <activity android:name=".Activities.CourseReviewsActivity" />
+        <activity android:name=".Activities.CourseReviewActivity"/>
+        <activity android:name=".Activities.CourseReviewsActivity"/>
         <activity android:name=".Activities.UserCourseViewActivity"></activity>
         <activity android:name=".Activities.TutorViewCoursesActivity" />
         <activity android:name=".Activities.CourseActivity" />

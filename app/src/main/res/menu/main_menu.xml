@@ -4,16 +4,15 @@
 
     <item
         android:id="@+id/my_profile"
-        android:title="Profile" />
+        android:title="Profile"/>
 
     <item
         android:id="@+id/change_pwd"
-        android:title="Change password" />
+        android:title="Change password"/>
 
     <item
         android:id="@+id/logout"
         android:title="Logout"
-
         app:showAsAction="withText" />
 
 </menu>

@@ -30,7 +30,7 @@ import java.util.HashMap;
 public class CourseReviewActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    TextView tv_name,tv_status,tv_price,tv_reviews,actv_desc,tv_condition,tv_category;
+    TextView tv_name,tv_status,tv_price,tv_reviews,tv_desc,tv_condition,tv_category;
     ImageView image_view;
     Button btn_book;
     SharedPreferences sharedPreferences;

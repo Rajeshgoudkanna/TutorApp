@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -47,7 +48,7 @@ public class CourseReviewsAdapter extends BaseAdapter {
         TextView tv_review = (TextView) obj2.findViewById(R.id.course_review);
         tv_review.setText(ar.get(pos).getReview());
 
-        RatingBar ratingBar = (RatingBar) obj2.findViewById(R.id.ratingBar);
+        RatingBar ratingBar=(RatingBar)obj2.findViewById(R.id.ratingBar);
         ratingBar.setRating(Float.parseFloat(ar.get(pos).getRating()));
 
         return obj2;

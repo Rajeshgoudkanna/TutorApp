@@ -23,7 +23,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:text="Name" />
+                android:text="Name"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/tv_name"
@@ -31,7 +32,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:text="Course Name" />
+                android:text="Course Name"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -46,7 +48,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="2dp"
-                android:text="description" />
+                android:text="description"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/tv_desc"
@@ -58,7 +61,8 @@
                 android:layout_weight="0.2"
                 android:padding="5dp"
                 android:text="Text"
-                android:textColor="#32302E" />
+                android:textColor="#32302E"
+                android:textSize="25sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -73,7 +77,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:text="Price" />
+                android:text="Price"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/tv_price_value"
@@ -81,7 +86,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:text="Price" />
+                android:text="Price"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -102,7 +108,8 @@
                     android:layout_height="50dp"
                     android:layout_margin="2dp"
                     android:layout_weight="1"
-                    android:text="Start Date" />
+                    android:text="Start Date"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tv_start_value"
@@ -110,7 +117,8 @@
                     android:layout_height="50dp"
                     android:layout_margin="2dp"
                     android:layout_weight="1"
-                    android:text="Price" />
+                    android:text="Price"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -125,7 +133,8 @@
                     android:layout_height="50dp"
                     android:layout_margin="2dp"
                     android:layout_weight="1"
-                    android:text="End Date" />
+                    android:text="End Date"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tv_end_value"
@@ -133,7 +142,8 @@
                     android:layout_height="50dp"
                     android:layout_margin="2dp"
                     android:layout_weight="1"
-                    android:text="Price" />
+                    android:text="Price"
+                    android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -148,7 +158,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:text="Course type" />
+                android:text="Course type"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/tv_type_value"
@@ -156,30 +167,31 @@
                 android:layout_height="50dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:text="Price" />
+                android:text="Price"
+                android:textSize="20sp" />
         </LinearLayout>
 
-        <!--        <LinearLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_weight="1">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1">-->
 
-        <!--            <TextView-->
-        <!--                android:id="@+id/tv_status"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="50dp"-->
-        <!--                android:layout_margin="2dp"-->
-        <!--                android:layout_weight="1"-->
-        <!--                android:text="Course Status" />-->
+<!--            <TextView-->
+<!--                android:id="@+id/tv_status"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_margin="2dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="Course Status" />-->
 
-        <!--            <TextView-->
-        <!--                android:id="@+id/tv_status_value"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="50dp"-->
-        <!--                android:layout_margin="2dp"-->
-        <!--                android:layout_weight="1"-->
-        <!--                android:text="" />-->
-        <!--        </LinearLayout>-->
+<!--            <TextView-->
+<!--                android:id="@+id/tv_status_value"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_margin="2dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="" />-->
+<!--        </LinearLayout>-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -191,7 +203,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:text="Course Category" />
+                android:text="Course Category"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/course_category_value"
@@ -199,20 +212,22 @@
                 android:layout_height="50dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:text="Price" />
+                android:text="Price"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <Button
             android:id="@+id/enroll_button"
             android:layout_width="342dp"
-            android:layout_marginLeft="40dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginLeft="40dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="40dp"
+            android:layout_weight="1"
             android:backgroundTint="#101010"
             android:text="Enroll"
-            android:textColor="#F8F5F5" />
+            android:textColor="#F8F5F5"
+            android:textSize="25sp" />
 
 
     </LinearLayout>

@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/mainbackground"
-    tools:context=".Activities.UserCourseViewActivity">
+    tools:context=".Activities.UserCourseViewActivity"
+    android:background="@drawable/mainbackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,28 +31,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ID"
-        android:id="@+id/course_id"
-        android:layout_gravity="center"
+        android:textColor="#000000"
+        android:textSize="15dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:textColor="#000000"
+        android:layout_gravity="center"
         android:fontFamily="sans-serif"
-        android:textSize="15dp"></TextView>
+        android:id="@+id/course_id"></TextView>
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height= "1dp"
         android:background="#9E51484C" />
-
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="20dp">
-
-        <TableRow
-            android:layout_height="30dp"
-            android:orientation="horizontal">
+        android:layout_marginTop="20dp"
+        >
+        <TableRow android:orientation="horizontal"
+            android:layout_height="30dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -75,10 +73,8 @@
                 android:textColor="#000000"
                 android:textSize="17sp"></TextView>
         </TableRow>
-
-        <TableRow
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+        <TableRow android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -102,9 +98,8 @@
                 android:textSize="17sp"></TextView>
         </TableRow>
 
-        <TableRow
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+        <TableRow android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -127,10 +122,8 @@
                 android:textColor="#000000"
                 android:textSize="17sp"></TextView>
         </TableRow>
-
-        <TableRow
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+        <TableRow android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -153,10 +146,8 @@
                 android:textColor="#000000"
                 android:textSize="17sp"></TextView>
         </TableRow>
-
-        <TableRow
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+        <TableRow android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -189,7 +180,7 @@
         </TableRow>
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height= "1dp"
             android:background="#9E51484C" />
         <ProgressBar
             android:id="@+id/progressbar"
@@ -213,11 +204,12 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:id="@+id/files_listView"
+            android:padding="10dp"
             android:divider="@null"
             android:listSelector="@android:color/transparent"
-            android:layout_marginTop="0dp"
-            android:padding="10dp"></ListView>
+            android:id="@+id/files_listView"
+            android:layout_marginTop="0dp">
+        </ListView>
     </TableLayout>
 </LinearLayout>
 

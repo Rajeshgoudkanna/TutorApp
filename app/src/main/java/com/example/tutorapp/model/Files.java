@@ -3,12 +3,12 @@ package com.example.tutorapp.model;
 public class Files {
 
     private String courseID;
-    private String File;
+    private String file;
     private String file_name;
 
-    public Files(String courseID, String File, String file_name) {
+    public Files(String courseID, String file, String file_name) {
         this.courseID = courseID;
-        this.File = File;
+        this.file = file;
         this.file_name = file_name;
     }
 
@@ -32,10 +32,10 @@ public class Files {
     }
 
     public String getFile() {
-        return File;
+        return file;
     }
 
     public void setFile(String file) {
-        this.File = file;
+        this.file = file;
     }
 }

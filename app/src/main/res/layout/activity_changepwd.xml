@@ -6,7 +6,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- android:background="#E2F2FA"-->
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_gravity="center"
         android:layout_width="match_parent"
@@ -21,40 +20,42 @@
 
         <TextView
             android:id="@+id/tv_pwd"
-            android:text="Change Password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
+            android:text="Change Password"
             android:textColor="#343535"
-            android:textSize="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textSize="25dp" />
 
 
         <EditText
             android:id="@+id/et_change_pass"
-            android:singleLine="true"
-            android:background="@drawable/edittext"
-            android:layout_marginTop="10dp"
-            android:padding="10dp"
-            android:hint="Change Password"
-            android:password="true"
-            android:layout_marginRight="30dp"
-            android:layout_marginLeft="30dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/edittext"
+            android:hint="Change Password"
+            android:padding="10dp"
+            android:password="true"
+            android:singleLine="true"
+            android:textSize="25sp" />
 
 
         <Button
             android:id="@+id/btn_update"
-            android:text="Update Password"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:backgroundTint="#151515"
             android:layout_width="match_parent"
             android:layout_height="43dp"
-            android:textColor="#FFFBFB" />
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="40dp"
+            android:backgroundTint="#151515"
+            android:text="Update Password"
+            android:textColor="#FFFBFB"
+            android:textSize="22sp" />
 
     </LinearLayout>
 </ScrollView>

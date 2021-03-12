@@ -1,6 +1,7 @@
 package com.example.tutorapp.Adapters;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,19 +18,21 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-
 import com.bumptech.glide.Glide;
 import com.example.tutorapp.Activities.CourseDetailsActivity;
 import com.example.tutorapp.Activities.CourseReviewsActivity;
 import com.example.tutorapp.Activities.Utils;
 import com.example.tutorapp.R;
+import com.example.tutorapp.Activities.TutorViewCoursesActivity;
 import com.example.tutorapp.model.Course;
+import com.example.tutorapp.model.Rating;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
@@ -40,15 +43,14 @@ public class CourseAdapter extends BaseAdapter {
     List<Float> rat;
     Context cnt;
     String session;
-    DatabaseReference RootRef, getfav;
+    DatabaseReference RootRef,getfav;
     SharedPreferences sharedPreferences;
     String user_role;
-    Float rate = 0f;
-
+    Float rate =0f;
     public CourseAdapter(Context cnt, List<Course> ar, String session) {
         this.ar = ar;
         this.cnt = cnt;
-        this.session = session;
+        this.session=session;
     }
 
     @Override
@@ -71,11 +73,11 @@ public class CourseAdapter extends BaseAdapter {
     public View getView(final int pos, View view, ViewGroup viewGroup) {
         LayoutInflater obj1 = (LayoutInflater) cnt.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View obj2 = obj1.inflate(R.layout.adapter_course, null);
-        sharedPreferences = obj2.getContext().getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
+        sharedPreferences =obj2.getContext().getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
         session = sharedPreferences.getString("user_name", "");
         user_role = sharedPreferences.getString("user_role", "");
 
-        ImageView image_view = (ImageView) obj2.findViewById(R.id.image_view);
+        ImageView image_view=(ImageView)obj2.findViewById(R.id.image_view);
         Glide.with(cnt).load(ar.get(pos).getImage()).into(image_view);
 
         TextView tv_cname = (TextView) obj2.findViewById(R.id.tv_cname);
@@ -85,7 +87,7 @@ public class CourseAdapter extends BaseAdapter {
 
         TextView tv_course_id = (TextView) obj2.findViewById(R.id.tv_course_id);
         tv_course_id.setText(ar.get(pos).getPid());
-        RatingBar tv_rating = (RatingBar) obj2.findViewById(R.id.tv_rating);
+        RatingBar tv_rating=(RatingBar)obj2.findViewById(R.id.tv_rating);
 //        Query query=FirebaseDatabase.getInstance().getReference("Course Reviews").child(ar.get(pos).getPid());
 //
 //        query.addListenerForSingleValueEvent(valueEventListener);
@@ -95,10 +97,10 @@ public class CourseAdapter extends BaseAdapter {
         tv_rating.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == motionEvent.ACTION_UP) {
+                if (motionEvent.getAction()== motionEvent.ACTION_UP){
 
                     Intent intent = new Intent(cnt, CourseReviewsActivity.class);
-                    intent.putExtra("pid", ar.get(pos).getPid());
+                    intent.putExtra("pid",ar.get(pos).getPid());
                     cnt.startActivity(intent);
                 }
                 return true;
@@ -106,32 +108,32 @@ public class CourseAdapter extends BaseAdapter {
         });
 
 
-        CardView cvParent = (CardView) obj2.findViewById(R.id.cvParent);
+        CardView cvParent=(CardView)obj2.findViewById(R.id.cvParent);
         cvParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (user_role.equals("Tutor")) {
+                if(user_role.equals("Tutor")){
 
-                    String selected_item = ((TextView) view.findViewById(R.id.tv_course_id)).getText().toString();
+                    String selected_item= ((TextView) view.findViewById(R.id.tv_course_id)).getText().toString();
                     Intent intent = new Intent(cnt, TutorViewCoursesActivity.class);
-                    intent.putExtra("selected", selected_item);
+                    intent.putExtra("selected",selected_item);
                     cnt.startActivity(intent);
 
-                } else {
-                    Intent intent = new Intent(cnt, CourseDetailsActivity.class);
-                    intent.putExtra("Cname", ar.get(pos).getCname());
-//                    intent.putExtra("Cstatus",ar.get(pos).getCstatus());
-                    intent.putExtra("Cprice", ar.get(pos).getCprice());
-                    intent.putExtra("Cdescription", ar.get(pos).getCdescription());
-                    intent.putExtra("Ctype", ar.get(pos).getCtype());
-                    intent.putExtra("Ccategory", ar.get(pos).getCcategory());
-                    intent.putExtra("CstartDate", ar.get(pos).getCstartDate());
-                    intent.putExtra("CendDate", ar.get(pos).getCendDate());
-                    intent.putExtra("Cimage", ar.get(pos).getCimage());
-                    intent.putExtra("pid", ar.get(pos).getPid());
-                    cnt.startActivity(intent);
                 }
+                else{
+                    Intent intent = new Intent(cnt, CourseDetailsActivity.class);
+                    intent.putExtra("Cname",ar.get(pos).getCname());
+//                    intent.putExtra("Cstatus",ar.get(pos).getCstatus());
+                    intent.putExtra("Cprice",ar.get(pos).getCprice());
+                    intent.putExtra("Cdescription",ar.get(pos).getCdescription());
+                    intent.putExtra("Ctype",ar.get(pos).getCtype());
+                    intent.putExtra("Ccategory",ar.get(pos).getCcategory());
+                    intent.putExtra("CstartDate",ar.get(pos).getCstartDate());
+                    intent.putExtra("CendDate",ar.get(pos).getCendDate());
+                    intent.putExtra("Cimage",ar.get(pos).getCimage());
+                    intent.putExtra("pid",ar.get(pos).getPid());
+                    cnt.startActivity(intent);}
             }
         });
 
@@ -162,10 +164,10 @@ public class CourseAdapter extends BaseAdapter {
 
                 if (clicked[0]) {
                     img_fav.setImageResource(R.drawable.ic_heart);
-                    Log.i("fav", "course" + ar.get(pos).getPid() + ar.get(pos).getImage() + ar.get(pos).getCdescription() + ar.get(pos).getCprice() + ar.get(pos).getCtype());
-                    favList(ar.get(pos).getPid().toString(), ar.get(pos).getImage().toString(), ar.get(pos).getCname().toString()
-                            , ar.get(pos).getCdescription().toString(), ar.get(pos).getCprice().toString(), ar.get(pos).getCtype().toString(),
-                            ar.get(pos).getCcategory().toString(), ar.get(pos).getCstartDate(), ar.get(pos).getCendDate().toString());
+                    Log.i("fav","course"+ ar.get(pos).getPid()+ar.get(pos).getImage()+ar.get(pos).getCdescription()+ar.get(pos).getCprice()+ar.get(pos).getCtype());
+                    favList(ar.get(pos).getPid().toString(),ar.get(pos).getImage().toString(),ar.get(pos).getCname().toString()
+                            ,ar.get(pos).getCdescription().toString(),ar.get(pos).getCprice().toString(),ar.get(pos).getCtype().toString(),
+                            ar.get(pos).getCcategory().toString(),ar.get(pos).getCstartDate(),ar.get(pos).getCendDate().toString());
 
 
                     clicked[0] = false;
@@ -208,9 +210,8 @@ public class CourseAdapter extends BaseAdapter {
 //    };
 
     private DatabaseReference ProductsRef;
-
-    public void favList(final String id, final String image, final String name, final String description
-            , final String price, final String type, final String catergory, final String startdate, final String enddate) {
+    public  void favList(final String id,final String image,final String name,final String description
+            ,final String price,final String type,final String catergory,final String startdate,final String enddate){
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
 
@@ -218,11 +219,12 @@ public class CourseAdapter extends BaseAdapter {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if (!(dataSnapshot.child("Favorite Courses").child(session).child(id).exists())) {
+                if (!(dataSnapshot.child("Favorite Courses").child(session).child(id).exists()))
+                {
                     HashMap<String, Object> productMap = new HashMap<>();
                     productMap.put("pid", id);
-                    productMap.put("Cimage", image);
-                    productMap.put("Cname", name);
+                    productMap.put("Cimage",image);
+                    productMap.put("Cname",name);
                     productMap.put("Cdescription", description);
                     productMap.put("Cprice", price);
                     productMap.put("Ctype", type);
